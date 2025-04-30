@@ -17,4 +17,5 @@ vim/viminfo
 tmux/plugins
 tmux/.tmux
 
-install.sh
+# Git
+git/credentials
