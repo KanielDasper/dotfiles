@@ -1,3 +1,15 @@
+# Zsh
 zsh/.zcompdump-Daniel’s MacBook Pro-5.9
 zsh/.zsh_history
 zsh/.zcompdump
+
+# Vim
+## Directories
+vim/plugged/
+vim/autoload/
+vim/history/
+
+# Files
+vim/.netrwhist
+vim/viminfo
+

@@ -1,0 +1,120 @@
+" General
+let mapleader="\<Space>"
+let maplocalleader=","
+syntax enable
+set hidden
+set updatetime=100
+set signcolumn=yes
+set mouse=a
+set nocompatible
+set cursorline
+
+" Codedark colorscheme and settings
+set t_Co=256
+set t_ut=
+set background=dark
+let g:codedark_modern=1
+let g:codedark_transparent=1
+colorscheme codedark
+
+" Directory specification and undo history
+set viminfo='50,f1,<500,n~/.config/vim/viminfo
+function! EnsureVimhisExists()
+    let vimhis_path = expand('~/.config/vim/history')
+
+    if !isdirectory(vimhis_path)
+        call mkdir(vimhis_path, 'p')
+        echo "Created directory: " . vimhis_path
+    endif
+endfunction
+call EnsureVimhisExists()
+
+if has('persistent_undo')
+	set undodir=~/.config/vim/history
+	set undolevels=5000
+	set undofile
+endif
+
+" netrw
+" Change directory to the current buffer when opening files.
+set autochdir
+let g:netrw_banner=0
+let g:netrw_keepdir=1
+let g:netrw_liststyle=3
+
+" Split	preferences
+set splitright
+set splitbelow
+
+" Line numbers and scrolloff
+set number
+set relativenumber
+set scrolloff=20
+set sidescroll=10
+
+" Filetype settings
+" Detects external changes to a file
+filetype plugin indent on
+set fileencoding=UTF-8
+set fileencodings=UTF-8
+set autoread
+set foldmethod=manual
+set foldlevel=3
+au FocusGained,BufEnter * silent! checktime
+
+" Error and undo handling
+set noerrorbells visualbell t_vb=
+set noswapfile
+set nobackup
+set nowritebackup
+set undofile
+set clipboard=unnamed
+
+" Search completion in the vim terminal
+" Buffer navigation
+set wildmenu wildmode=full
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx,*\\tmp\\*,*.swp,*.zip
+set showcmd
+set showmatch
+
+" Search with /
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Tab, shift and indentation settings
+set autoindent
+set smarttab
+set linebreak
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+" Plugin management
+call plug#begin()
+
+" LSP
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-scripts/spss-syntax-highlighting-file'
+Plug 'sheerun/vim-polyglot'
+
+" motions
+Plug 'raimondi/delimitmate'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
+" others
+Plug 'Donaldttt/fuzzyy'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'shime/vim-livedown'
+
+" journaling
+Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
+
+call plug#end()
+
+" Manpages
+runtime! ftplugin/man.vim
