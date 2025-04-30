@@ -13,3 +13,8 @@ vim/history/
 vim/.netrwhist
 vim/viminfo
 
+# Tmux
+tmux/plugins
+tmux/.tmux
+
+install.sh
