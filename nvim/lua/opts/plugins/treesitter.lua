@@ -39,6 +39,7 @@ return {
 					"gitignore",
 					"query",
 					"vimdoc",
+					"diff",
 					"c",
 					"regex",
 				},

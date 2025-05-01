@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 
 -- Stolen from TJ Devries
 -- gj and gk except for when jumping lines with numbers
-keymap("n", "j", function(...)
+keymap("n", "j", function()
 	local count = vim.v.count
 
 	if count == 0 then
@@ -13,7 +13,7 @@ keymap("n", "j", function(...)
 	end
 end, { expr = true })
 
-keymap("n", "k", function(...)
+keymap("n", "k", function()
 	local count = vim.v.count
 
 	if count == 0 then
@@ -84,6 +84,8 @@ keymap("n", "<leader>dt", function()
 		vim.cmd("windo diffthis")
 	end
 end, { desc = "Toggle diffview with window" })
+
+keymap("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Exit diffview quickly" })
 
 -- Copy filepath to the clipboard
 keymap("n", "<localleader>dd", function()

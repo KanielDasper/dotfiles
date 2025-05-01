@@ -4,6 +4,7 @@ return {
 	opts = {
 		picker = {
 			enabled = true,
+			hidden = true,
 			prompt = " 󰁕 ",
 			formatters = {
 				file = { filename_first = false, filename_only = false, icon_width = 2 },
@@ -21,10 +22,11 @@ return {
 		{
 			"<leader>ff",
 			function()
-				Snacks.picker.files({
+				Snacks.picker.smart({
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
+					exclude = { "*.pdf", "*.png" },
 				})
 			end,
 			desc = "Find Files",
