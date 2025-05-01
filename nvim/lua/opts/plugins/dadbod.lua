@@ -9,7 +9,7 @@ return {
 				sources = {
 					default = { "lsp", "path", "snippets", "buffer" },
 					per_filetype = {
-						sql = { "snippets", "dadbod", "buffer" },
+						sql = { "lsp", "snippets", "dadbod", "buffer" },
 					},
 					providers = {
 						dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
@@ -23,5 +23,8 @@ return {
 		-- DBUI configuration can be put here
 		-- See: https://github.com/kristijanhusak/vim-dadbod-ui
 		-- TODO: Add DB helper snippets and saved database connections
+		vim.g.db_ui_save_location = vim.fn.stdpath("data") .. "/db_ui"
+
+		vim.keymap.set("n", "<localleader>db", "<Cmd>DBUIToggle<CR>", { desc = "Toggle Dadbod UI", silent = true })
 	end,
 }

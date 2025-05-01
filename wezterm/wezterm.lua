@@ -20,7 +20,7 @@ config.animation_fps = 120
 if appearance.is_dark() then
 	config.color_scheme = "Tokyo Night Storm"
 else
-	config.color_scheme = "iceberg-dark"
+	config.color_scheme = "Tokyo Night Day"
 end
 
 -- Fonts
