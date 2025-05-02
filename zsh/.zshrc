@@ -33,6 +33,7 @@ alias ls="eza -a --color=always --across --git --icons=always --no-user"
 
 # Set neovim as manpager
 export MANPAGER='nvim +Man!'
+export GIT_PAGER='nvim +Man!'
 
 # Add fzf keybindings and fuzzy completion
 eval "$(fzf --zsh)"

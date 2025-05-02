@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 -- Terminal Float State (taught by tj)
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
@@ -43,16 +44,19 @@ local pop_terminal = function()
 		state.floating = create_floating_window({ buf = state.floating.buf })
 		if vim.bo[state.floating.buf].buftype ~= "terminal" then
 			vim.cmd.terminal()
+		end
 
-			-- Get the virtual environment path
-			local virtual_env = vim.fn.getenv("VIRTUAL_ENV")
-			if virtual_env and virtual_env ~= vim.NIL and virtual_env ~= "" then
-				local activate_script = virtual_env .. "/bin/activate"
-				vim.api.nvim_chan_send(
-					vim.bo[state.floating.buf].channel,
-					"clear && source " .. activate_script .. "\n"
-				)
+		local venv_raw = vim.fn.getenv("VIRTUAL_ENV")
+		if venv_raw and venv_raw ~= vim.NIL and venv_raw ~= "" then
+			local virtual_env = tostring(venv_raw)
+			local os_name = vim.uv.os_uname().sysname
+			local activate_script
+			if os_name == "Windows_NT" then
+				activate_script = virtual_env .. "/Scripts/activate"
+			else
+				activate_script = virtual_env .. "/bin/activate"
 			end
+			vim.api.nvim_chan_send(vim.bo[state.floating.buf].channel, " clear && source " .. activate_script .. "\n")
 		end
 
 		-- Start float terminal in insert mode
@@ -65,6 +69,6 @@ end
 
 vim.api.nvim_create_user_command("Terminalpop", pop_terminal, { desc = "Opens a floating terminal" })
 
--- Two keymaps just because its nice that spacebar gets triggered properly when writing in terminal
-vim.keymap.set({ "n" }, "<leader>t", pop_terminal)
-vim.keymap.set({ "t", "n" }, "<localleader><esc>", pop_terminal)
+-- Two keymaps different just because its nice that spacebar gets triggered properly when writing in terminal
+vim.keymap.set({ "n" }, "<leader>t", pop_terminal, { desc = "Opens a floating terminal" })
+vim.keymap.set({ "t", "n" }, "<localleader><esc>", pop_terminal, { desc = "Opens a floating terminal" })

@@ -13,7 +13,8 @@ return {
 				graphql = { "prettier" },
 				json = { "jq" },
 				lua = { "stylua" },
-				python = { "ruff_format" },
+				python = { "ruff_format", "ruff_organize_imports" },
+				["*"] = { "trim_whitespace", "trim_newlines" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

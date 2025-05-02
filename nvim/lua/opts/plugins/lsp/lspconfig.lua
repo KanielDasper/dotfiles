@@ -20,10 +20,10 @@ return {
 		vim.diagnostic.config({
 			signs = {
 				text = {
-					[vim.diagnostic.severity.ERROR] = " ",
-					[vim.diagnostic.severity.WARN] = " ",
-					[vim.diagnostic.severity.HINT] = "󰠠 ",
-					[vim.diagnostic.severity.INFO] = " ",
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.INFO] = " ",
+					[vim.diagnostic.severity.HINT] = " ",
 				},
 			},
 		})
@@ -87,7 +87,7 @@ return {
 				opts.desc = "Restart LSP server"
 				keymap("n", "<leader>rs", ":LspRestart<CR>", opts)
 
-				keymap("n", "grh", function()
+				keymap("i", "<C-f>", function()
 					vim.lsp.buf.signature_help()
 				end, opts)
 			end,
@@ -157,6 +157,9 @@ return {
 					logLevel = "debug",
 					logFile = vim.fn.stdpath("state") .. "ruff.log",
 					format = {
+						preview = true,
+					},
+					lint = {
 						preview = true,
 					},
 				},
