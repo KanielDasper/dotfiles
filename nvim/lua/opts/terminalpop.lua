@@ -63,7 +63,7 @@ local pop_terminal = function()
 	end
 end
 
-vim.api.nvim_create_user_command("Terminalpop", pop_terminal, {})
+vim.api.nvim_create_user_command("Terminalpop", pop_terminal, { desc = "Opens a floating terminal" })
 
 -- Two keymaps just because its nice that spacebar gets triggered properly when writing in terminal
 vim.keymap.set({ "n" }, "<leader>t", pop_terminal)

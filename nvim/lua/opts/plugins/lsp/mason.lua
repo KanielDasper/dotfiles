@@ -43,7 +43,7 @@ return {
 				"stylua", -- lua formatter
 				"selene", -- lua linter
 				"ruff", -- python linter + formatter
-				"clangd",
+				"jsonlint", -- json linter
 			},
 		})
 	end,

@@ -13,9 +13,10 @@ return {
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
+
 		-- Import completion capabilities from blink.cmp
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		-- Diagnostic signs
+
 		vim.diagnostic.config({
 			signs = {
 				text = {
@@ -30,25 +31,21 @@ return {
 		vim.o.foldmethod = "expr"
 		-- Default to treesitter folding
 		vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-		-- Prefer LSP folding if client supports it
-		vim.api.nvim_create_autocmd("LspAttach", {
-			callback = function(args)
-				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				if client:supports_method("textDocument/foldingRange") then
-					local win = vim.api.nvim_get_current_win()
-					vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-				end
-			end,
-		})
 
 		-- Autocmd for keymaps when LSP is active
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-			callback = function(ev)
+			callback = function(event)
 				-- Buffer local mappings
 				-- Check `:help vim.lsp.*` for documentation on any of the below functions
-				local opts = { buffer = ev.buf, silent = true }
+				local opts = { buffer = event.buf, silent = true }
 				local keymap = vim.keymap.set
+
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				if client:supports_method("textDocument/foldingRange") then
+					local win = vim.api.nvim_get_current_win()
+					vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+				end
 
 				opts.desc = "Go to LSP references in buffer"
 				keymap("n", "grr", "<cmd>Trouble lsp_references toggle filter.buf=0<CR>", opts)
@@ -83,7 +80,9 @@ return {
 				keymap("n", "grn", vim.lsp.buf.rename, opts)
 
 				opts.desc = "Show documentation on hover"
-				keymap("n", "K", vim.lsp.buf.hover, opts)
+				keymap("n", "K", function()
+					vim.lsp.buf.hover({ border = "rounded" })
+				end, opts)
 
 				opts.desc = "Restart LSP server"
 				keymap("n", "<leader>rs", ":LspRestart<CR>", opts)
@@ -107,8 +106,12 @@ return {
 					},
 					workspace = {
 						library = {
+							--NOTE:
+							-- 3rd refers to predefined 3rd party plugins supported by lua_ls
+							-- see: https://github.com/LuaLS/lua-language-server/tree/47b3a56c5f6a2bff29f60f7f1bce95e40b3ff5a2/meta/3rd
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 							[vim.fn.stdpath("config") .. "/lua"] = true,
+							-- ["${3rd}/love2d/library"] = true,
 						},
 					},
 				},
@@ -151,8 +154,8 @@ return {
 		lspconfig.ruff.setup({
 			init_options = {
 				settings = {
-					logLevel = "info",
-					logFile = "~/.local/state/nvim/ruff.log",
+					logLevel = "debug",
+					logFile = vim.fn.stdpath("state") .. "ruff.log",
 					format = {
 						preview = true,
 					},

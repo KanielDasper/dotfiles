@@ -45,7 +45,7 @@ return {
 			desc = "Git Diff (Hunks)",
 		},
 		{
-			"<leader>qq",
+			"<leader>q",
 			function()
 				Snacks.bufdelete()
 			end,

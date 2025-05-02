@@ -12,6 +12,10 @@ return {
 					key = "<C-v>",
 					command = "vsplit",
 				},
+				h = {
+					key = "<C-s>",
+					command = "vsplit",
+				},
 			},
 			height = 0.4,
 			width = 0.6,

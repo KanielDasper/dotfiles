@@ -5,11 +5,6 @@ return {
 	config = function()
 		local lint = require("lint")
 
-		-- linting is decladed in LSP
-		-- lint.linters_by_ft = {
-		-- 	python = { "ruff" },
-		-- }
-
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			vim.diagnostic.config({ virtual_text = true, underline = true }),

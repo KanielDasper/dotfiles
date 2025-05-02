@@ -34,7 +34,7 @@ return {
 		{
 			"<leader>fc",
 			function()
-				Snacks.picker.smart({
+				Snacks.picker.files({
 					cwd = vim.fn.stdpath("config"),
 					on_show = function()
 						vim.cmd.stopinsert()
@@ -46,7 +46,7 @@ return {
 		{
 			"<leader>fw",
 			function()
-				Snacks.picker.smart({
+				Snacks.picker.files({
 					cwd = "~/Documents/Vimwiki/",
 					on_show = function()
 						vim.cmd.stopinsert()
@@ -58,7 +58,7 @@ return {
 		{
 			"<leader>fp",
 			function()
-				Snacks.picker.smart({
+				Snacks.picker.files({
 					cwd = "~/.local/share/nvim/lazy",
 					on_show = function()
 						vim.cmd.stopinsert()

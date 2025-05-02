@@ -85,8 +85,6 @@ keymap("n", "<leader>dt", function()
 	end
 end, { desc = "Toggle diffview with window" })
 
-keymap("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Exit diffview quickly" })
-
 -- Copy filepath to the clipboard
 keymap("n", "<localleader>dd", function()
 	local filePath = vim.fn.expand("%:p")
