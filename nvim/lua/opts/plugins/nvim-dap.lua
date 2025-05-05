@@ -18,7 +18,7 @@ return {
 
 			local virtual_text = require("nvim-dap-virtual-text")
 			virtual_text.setup({
-				commented = true, -- Show virtual text alongside comment
+				commented = false, -- Show virtual text alongside comment, can be a pain with df's
 				show_stop_reason = true,
 			})
 
@@ -28,11 +28,12 @@ return {
 				dap.toggle_breakpoint(vim.fn.input("Breakpoint condition: "))
 			end)
 			vim.keymap.set("n", "<space>gb", dap.run_to_cursor, { desc = "Run debugger to cursor pos" })
-			vim.keymap.set("n", "<F1>", dap.continue, { desc = "Start or Continue debugger" })
-			vim.keymap.set("n", "<F2>", dap.step_into, { desc = "Step into" })
-			vim.keymap.set("n", "<F3>", dap.step_over, { desc = "Step over" })
-			vim.keymap.set("n", "<F4>", dap.step_out, { desc = "Step out" })
-			vim.keymap.set("n", "<F5>", dap.step_back, { desc = "Step back" })
+			vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Step into" })
+			vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Step over" })
+			vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Step out" })
+			vim.keymap.set("n", "<F4>", dap.step_back, { desc = "Step back" })
+
+			vim.keymap.set("n", "<F5>", dap.continue, { desc = "Start or Continue debugger" })
 			vim.keymap.set("n", "<F7>", dap.restart, { desc = "Restart debugger" })
 			vim.keymap.set("n", "<F8>", dap.terminate, { desc = "Terminate debugger" })
 
