@@ -23,6 +23,8 @@ keymap("n", "k", function()
 	end
 end, { expr = true })
 
+keymap("n", "<localleader>.", ":w<cr><cmd>luafile %<cr>", { desc = "Save and Run luafile" })
+
 -- Move lines visual
 keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })

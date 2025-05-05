@@ -11,6 +11,9 @@ config.enable_tab_bar = false
 config.macos_window_background_blur = 30
 config.window_background_opacity = 0.7
 
+config.enable_kitty_keyboard = true
+config.enable_kitty_graphics = true
+
 -- General
 config.automatically_reload_config = true
 config.max_fps = 120
@@ -18,7 +21,7 @@ config.animation_fps = 120
 
 -- colorscheme from require("appearance")
 if appearance.is_dark() then
-	config.color_scheme = "Tokyo Night Moon"
+	config.color_scheme = "Tokyo Night"
 else
 	config.color_scheme = "Tokyo Night Day"
 end

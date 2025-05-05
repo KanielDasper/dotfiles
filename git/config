@@ -10,8 +10,9 @@
 	helper = store
 [alias]
 	st = status
-	cm = commit -m 
+	cm = commit -m
 	d = difftool -y
+    m = mergetool
 [diff]
 	tool = nvimdiff
 [merge]
@@ -23,5 +24,10 @@
 [delta]
     navigate = true  # use n and N to move between diff sections
     dark = true      # or light = true, or omit for auto-detection
-[merge]
-    conflictstyle = zdiff3
+
+[difftool "nvimdiff"]
+    cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[mergetool "nvimdiff"]
+    cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c "wincmd w"
+    trustExitCode = true
