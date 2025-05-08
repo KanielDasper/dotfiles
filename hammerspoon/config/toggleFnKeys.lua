@@ -1,10 +1,11 @@
+-- toggleFnKeys.lua
 hs.hotkey.bind({ "cmd" }, "escape", function()
 	hs.alert.show("Toggle fn keys...")
 	local script = [[ set osver to system version of (system info)
-        
+
         if osver ≥ 13.0 then
             open location "x-apple.systempreferences:com.apple.Keyboard-Settings.extension"
-            
+
             if osver ≥ 14.0 then
                 tell application "System Settings"
                     reveal anchor "FunctionKeys" of pane id "com.apple.Keyboard-Settings.extension"
@@ -49,7 +50,7 @@ hs.hotkey.bind({ "cmd" }, "escape", function()
             tell application "System Settings"
                 set current pane to pane "com.apple.preference.keyboard"
             end tell
-            
+
             tell application "System Events"
                 if UI elements enabled then
                     tell application process "System Preferences"

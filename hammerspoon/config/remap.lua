@@ -1,3 +1,4 @@
+-- Remaps.lua
 -- Small rebinds to make python less of a pain
 hs.hotkey.bind("ctrl", "8", function()
 	hs.eventtap.keyStrokes("[")

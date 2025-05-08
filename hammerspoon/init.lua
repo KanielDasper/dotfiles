@@ -2,9 +2,7 @@
 hs = hs
 
 -- require directory files
-require("remap")
-require("app_hotkey")
-require("toggle_fn_keys")
+require("config")
 hs.loadSpoon("cmdMate")
 
 -- Reload config
