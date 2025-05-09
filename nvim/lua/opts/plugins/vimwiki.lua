@@ -12,13 +12,17 @@ return {
 			},
 		}
 		vim.g.vimwiki_use_calendar = 1
+		vim.g.vimwiki_global_ext = 0
 
 		-- Autocmd for diary template
 		vim.api.nvim_create_autocmd("BufNewFile", {
 			pattern = "*/diary/*.md",
 			callback = function()
 				local bufnr = vim.api.nvim_get_current_buf()
-				if vim.api.nvim_buf_line_count(bufnr) == 1 and vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] == "" then
+				if
+					vim.api.nvim_buf_line_count(bufnr) == 1
+					and vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] == ""
+				then
 					local date = os.date("%Y-%m-%d")
 					local template = {
 						"# " .. date,
@@ -29,7 +33,7 @@ return {
 						"* [ ]",
 						"",
 						"## Notes",
-						""
+						"",
 					}
 					vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, template)
 				end

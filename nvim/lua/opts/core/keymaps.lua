@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 
 -- Stolen from TJ Devries
 -- gj and gk except for when jumping lines with numbers
-keymap("n", "j", function()
+keymap({ "n", "v" }, "j", function()
 	local count = vim.v.count
 
 	if count == 0 then
@@ -13,7 +13,7 @@ keymap("n", "j", function()
 	end
 end, { expr = true })
 
-keymap("n", "k", function()
+keymap({ "n", "v" }, "k", function()
 	local count = vim.v.count
 
 	if count == 0 then
@@ -23,7 +23,7 @@ keymap("n", "k", function()
 	end
 end, { expr = true })
 
-keymap("n", "<localleader>.", ":w<cr><cmd>luafile %<cr>", { desc = "Save and Run luafile" })
+keymap("n", "<leader>rr", ":w<cr><cmd>luafile %<cr>", { desc = "Save and Run luafile" })
 
 -- Move lines visual
 keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
@@ -76,6 +76,26 @@ keymap("n", "<Esc>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
 
 -- Unmaps Q in normal mode
 keymap("n", "Q", "<nop>", { desc = "Unmaps Q in normal mode" })
+
+-- Save document to word
+keymap("n", "<localleader>w", function()
+	local filepath = vim.fn.expand("%:p")
+	if filepath == "" then
+		vim.ui.input({ prompt = "Enter filename for unsaved buffer (with extension): " }, function(input)
+			if input and input ~= "" then
+				vim.cmd("write " .. input)
+				local name = vim.fn.fnamemodify(input, ":t:r")
+				vim.cmd("!pandoc -o " .. name .. ".docx " .. input)
+			else
+				print("No filename provided. Aborting.")
+			end
+		end)
+	else
+		local name = vim.fn.fnamemodify(filepath, ":t:r")
+		vim.cmd("write")
+		vim.cmd("!pandoc -o " .. name .. ".docx " .. filepath)
+	end
+end, { desc = "Save and export to Word" })
 
 -- Toggeable diff between two open windows
 keymap("n", "<leader>dt", function()

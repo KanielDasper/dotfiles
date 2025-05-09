@@ -7,7 +7,20 @@ return {
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-			vim.diagnostic.config({ virtual_text = true, underline = true }),
+
+			-- How should linting diagnostics look?
+			vim.diagnostic.config({
+				-- virtual_lines = true,
+				virtual_text = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = " ",
+						[vim.diagnostic.severity.WARN] = " ",
+						[vim.diagnostic.severity.INFO] = " ",
+						[vim.diagnostic.severity.HINT] = " ",
+					},
+				},
+			}),
 			group = lint_augroup,
 			callback = function()
 				lint.try_lint()

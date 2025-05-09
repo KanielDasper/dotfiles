@@ -4,6 +4,7 @@ return {
 		"saghen/blink.cmp",
 		{
 			"folke/lazydev.nvim",
+			ft = "lua",
 			opts = {
 				library = {
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
@@ -16,17 +17,6 @@ return {
 
 		-- Import completion capabilities from blink.cmp
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-		vim.diagnostic.config({
-			signs = {
-				text = {
-					[vim.diagnostic.severity.ERROR] = " ",
-					[vim.diagnostic.severity.WARN] = " ",
-					[vim.diagnostic.severity.INFO] = " ",
-					[vim.diagnostic.severity.HINT] = " ",
-				},
-			},
-		})
 
 		vim.o.foldmethod = "expr"
 		-- Default to treesitter folding
@@ -87,8 +77,8 @@ return {
 				opts.desc = "Restart LSP server"
 				keymap("n", "<leader>rs", ":LspRestart<CR>", opts)
 
-				keymap("i", "<C-f>", function()
-					vim.lsp.buf.signature_help()
+				keymap("i", "<C-i>", function()
+					vim.lsp.buf.signature_help({ border = "rounded" })
 				end, opts)
 			end,
 		})
@@ -163,6 +153,16 @@ return {
 						preview = true,
 					},
 				},
+			},
+		})
+
+		-- Configure json
+		lspconfig.jsonls.setup({
+			capabilities = capabilities,
+			cmd = { "vscode-json-language-server", "--stdio" },
+			filetypes = { "json", "jsonc" },
+			init_options = {
+				provideFormatter = true,
 			},
 		})
 	end,
