@@ -4,15 +4,18 @@ local appearance = require("appearance")
 
 -- Config table
 local config = {}
+local cool_fonts = { "IosevkaTerm Nerd Font Mono", "MesloLG Nerd Font Mono" }
 
 -- Window customization
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
-config.macos_window_background_blur = 30
-config.window_background_opacity = 0.7
+-- config.macos_window_background_blur = 30
+-- config.window_background_opacity = 0.7
 
-config.enable_kitty_keyboard = true
-config.enable_kitty_graphics = true
+-- Fonts
+config.font = wezterm.font(cool_fonts[1])
+config.font_size = 16.0
+config.line_height = 1.50
 
 -- General
 config.automatically_reload_config = true
@@ -21,15 +24,10 @@ config.animation_fps = 120
 
 -- colorscheme from require("appearance")
 if appearance.is_dark() then
-	config.color_scheme = "Tokyo Night"
+	config.color_scheme = "Tokyo Night Moon"
 else
 	config.color_scheme = "Tokyo Night Day"
 end
-
--- Fonts
-config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
-config.font_size = 16.0
-config.line_height = 1.30
 
 -- Connect homebrew path
 config.set_environment_variables = {
@@ -50,7 +48,7 @@ config.window_padding = {
 
 -- Window frame config
 config.window_frame = {
-	font = wezterm.font({ family = "IosevkaTerm Nerd Font Mono", weight = "Bold" }),
+	font = wezterm.font({ family = cool_fonts[1], weight = "Bold" }),
 	font_size = 12,
 }
 config.colors = {
@@ -58,6 +56,10 @@ config.colors = {
 		inactive_tab_edge = "#575757",
 	},
 }
+
+-- Enable image processing from kitty
+config.enable_kitty_keyboard = true
+config.enable_kitty_graphics = true
 
 -- Keybindings
 config.keys = {

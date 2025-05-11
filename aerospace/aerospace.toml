@@ -178,6 +178,9 @@ run = [
 if.app-id = 'com.apple.Preview' # Preview
 run = 'move-node-to-workspace P'
 [[on-window-detected]]
+if.app-id = 'com.microsoft.Word' # Preview
+run = 'move-node-to-workspace 2'
+[[on-window-detected]]
 if.app-id = 'com.sonos.client' # Sonos
 run = 'move-node-to-workspace S'
 [[on-window-detected]]

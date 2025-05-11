@@ -4,7 +4,7 @@ return {
 	opts = {
 		zen = {
 			toggles = {
-				dim = false,
+				dim = false, -- toggled with <leader>uD
 				git_signs = true,
 				mini_diff_signs = false,
 				-- diagnostics = false,
