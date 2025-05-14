@@ -36,13 +36,13 @@ keymap("n", "<C-w>e", ":enew<CR>", { desc = "Open new buffer" })
 -- yanking
 keymap("n", "<leader>y", ":%y+<CR>", { desc = "Yank the whole buffer" })
 
--- Enter cmd mode
-keymap("n", "<C-e>", ":", { desc = "Enter command mode" })
-keymap("i", "<C-e>", "<Esc>:", { desc = "Enter command mode" })
-keymap("v", "<C-e>", ":", { desc = "Enter command mode" })
+-- Enter cmd mode - Should not use this bad habit
+-- keymap("n", "<C-e>", ":", { desc = "Enter command mode" })
+-- keymap("i", "<C-e>", "<Esc>:", { desc = "Enter command mode" })
+-- keymap("v", "<C-e>", ":", { desc = "Enter command mode" })
 
--- Escape to normal mode
-keymap({ "i", "c" }, "jj", "<Esc>", { desc = "Escape to normal mode" })
+-- Escape to normal mode - trying with caps lock tap to esc
+-- keymap({ "i", "c" }, "jj", "<Esc>", { desc = "Escape to normal mode" })
 
 -- QoL center screen with zz
 keymap("n", "J", "mzJ`z")
