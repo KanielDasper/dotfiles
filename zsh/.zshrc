@@ -14,52 +14,66 @@ HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 HIST_STAMPS="yyyy-mm-dd"
 plugins=(
-	git 
-	zsh-autosuggestions 
+	zsh-autosuggestions
 	zsh-syntax-highlighting
-	python 
 )
 source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Aliases
-alias vi=nvim
-alias v=nvim
+alias vi="nvim"
+alias v="nvim"
+alias :q="exit"
 alias ..="cd .."
 alias dockspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock"
 alias fzfman='compgen -c | fzf'
-alias y="yazi"
 alias ls="eza -a --color=always --across --git --icons=always --no-user"
+alias globalip="curl http://ipecho.net/plain; echo"
 
 # Set neovim as manpager
 export MANPAGER='nvim +Man!'
 export GIT_PAGER='nvim +Man!'
 
-# Add fzf keybindings and fuzzy completion
+# Edit and source with ze
+function ze() {
+  local zrc="$CONFIG/zsh/.zshrc"
+  local zpro="$HOME/.zprofile"
+  local tmp="$(mktemp)"
+
+  sha256sum "$zrc" > "$tmp"
+
+  nvim "$zrc"
+
+  if ! sha256sum --check --status "$tmp"; then
+    echo "Changes detected. Reloading..."
+    source "$zrc"
+    source "$zpro"
+  fi
+
+  rm -f "$tmp"
+}
+
+# Fzf options
+export FZF_DEFAULT_OPTS="
+    --layout reverse
+    --style minimal
+    --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
+    --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a
+"
+
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview '[[ -d {} ]] && tree -aC {} || bat --style=numbers --color=always {}'
+  --bind 'enter:execute(nvim {})+abort'
+  --bind 'ctrl-y:accept'
+"
+
 eval "$(fzf --zsh)"
-_fzf_comprun() {
-  local command=$1
-  shift
 
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-  esac
-}
-
-# Yazi wrapper
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
 
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

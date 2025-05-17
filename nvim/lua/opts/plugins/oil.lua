@@ -17,7 +17,7 @@ return {
 					["<C-l>"] = false,
 					["<C-k>"] = false,
 					["<C-j>"] = false,
-					["gd"] = {
+					["<C-i>"] = {
 						desc = "Toggle detail view",
 						callback = function()
 							local oil = require("oil")

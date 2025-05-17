@@ -1,19 +1,20 @@
--- Init wezterm config table
-local wezterm = require("wezterm")
-local appearance = require("appearance")
-
--- Config table
 local config = {}
-local cool_fonts = { "IosevkaTerm Nerd Font Mono", "MesloLG Nerd Font Mono" }
+local cool_fonts = { "IosevkaTerm Nerd Font Mono", "MesloLGL Nerd Font Mono", "JetBrainsMono Nerd Font Mono" }
+local color_schemes = { "Tokyo Night", "Tokyo Night Moon", "Tokyo Night Storm" }
+local current_colorscheme = color_schemes[math.random(1, #color_schemes)]
+
+local wezterm = require("wezterm")
 
 -- Window customization
 config.window_decorations = "RESIZE"
-config.enable_tab_bar = false
 -- config.macos_window_background_blur = 30
--- config.window_background_opacity = 0.7
+-- config.window_background_opacity = 0.9
+
+-- Colorscheme
+config.color_scheme = current_colorscheme
 
 -- Fonts
-config.font = wezterm.font(cool_fonts[1])
+config.font = wezterm.font(cool_fonts[3])
 config.font_size = 16.0
 config.line_height = 1.50
 
@@ -23,11 +24,6 @@ config.max_fps = 120
 config.animation_fps = 120
 
 -- colorscheme from require("appearance")
-if appearance.is_dark() then
-	config.color_scheme = "Tokyo Night Moon"
-else
-	config.color_scheme = "Tokyo Night Day"
-end
 
 -- Connect homebrew path
 config.set_environment_variables = {
@@ -36,7 +32,7 @@ config.set_environment_variables = {
 
 -- Scrollbar
 config.enable_scroll_bar = true
-config.scrollback_lines = 3500
+config.scrollback_lines = 10000
 
 -- Padding
 config.window_padding = {
@@ -47,15 +43,16 @@ config.window_padding = {
 }
 
 -- Window frame config
-config.window_frame = {
-	font = wezterm.font({ family = cool_fonts[1], weight = "Bold" }),
-	font_size = 12,
-}
-config.colors = {
-	tab_bar = {
-		inactive_tab_edge = "#575757",
-	},
-}
+config.enable_tab_bar = false
+-- config.window_frame = {
+-- 	font = wezterm.font({ family = cool_fonts[1], weight = "Bold" }),
+-- 	font_size = 12,
+-- }
+-- config.colors = {
+-- 	tab_bar = {
+-- 		inactive_tab_edge = "#575757",
+-- 	},
+-- }
 
 -- Enable image processing from kitty
 config.enable_kitty_keyboard = true

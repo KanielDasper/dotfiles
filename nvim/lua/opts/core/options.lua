@@ -1,59 +1,67 @@
-local option = vim.opt
-vim.cmd("let g:netrw_banner = 0 ")
+-- line numbers
+vim.o.number = true
+vim.o.relativenumber = true
 
-option.guicursor = ""
-option.number = true
-option.relativenumber = true
-
-option.tabstop = 4
-option.softtabstop = 4
-option.shiftwidth = 4
-option.expandtab = true
-option.smartindent = true
+-- tab and shift width
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.breakindent = true -- Preserve indentation
 
 -- Can be toggled with snacks.nvim
-option.wrap = true
-option.cursorline = false
+vim.o.wrap = true
+vim.o.cursorline = false
 
-option.swapfile = false
-option.backup = false
-option.undodir = os.getenv("HOME") .. "/.local/share/nvim/undodir"
-option.undofile = true
+-- Backup files for buffers, only use undo
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undofile = true
+vim.o.undodir = vim.fn.stdpath("data")
 
-option.inccommand = "split"
+vim.o.inccommand = "split"
 
-option.ignorecase = true
-option.smartcase = true
+-- better cmdline search
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-option.termguicolors = true
-option.background = "dark"
+-- For colorschemes, i like it dark
+vim.o.termguicolors = true
+vim.o.background = "dark"
 
-option.scrolloff = 15
+-- When window should begin to scroll (99 for centered)
+vim.o.scrolloff = 99
 
 -- Enable folding ( setup in lsp-config )
-option.foldenable = true -- Enable folding by default
-option.foldlevel = 99 -- Open most folds by default
-option.foldcolumn = "0"
-option.signcolumn = "yes:1"
+vim.o.foldenable = true -- Enable folding by default
+vim.o.foldlevel = 99 -- Open most folds by default
+vim.o.foldcolumn = "0"
+
+-- Give the column some space
+vim.o.signcolumn = "yes:1"
 
 --split windows
-option.splitright = true --split vertical window to the right
-option.splitbelow = true --split horizontal window to the bottom
+vim.o.splitright = true --split vertical window to the right
+vim.o.splitbelow = true --split horizontal window to the bottom
+vim.o.laststatus = 3 -- Preserve 1 statusline on split
 
-option.isfname:append("@-@")
-option.updatetime = 50
+-- How fast should vim update
+vim.o.updatetime = 50
 
 -- clipboard
-option.clipboard:append("unnamedplus") --use system clipboard as default
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
 
 -- for easy mouse resizing, just incase
-option.mouse = "a"
+vim.o.mouse = "a"
 
-option.fillchars = {
+-- Table opts for diffview in nvim, this makes it look like vscode
+vim.opt.fillchars = {
 	diff = "╱",
 }
-
-option.diffopt = {
+vim.opt.diffopt = {
 	"internal",
 	"filler",
 	"closeoff",

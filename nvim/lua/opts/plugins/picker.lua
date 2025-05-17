@@ -59,7 +59,7 @@ return {
 			"<leader>fp",
 			function()
 				Snacks.picker.files({
-					cwd = "~/.local/share/nvim/lazy",
+					cwd = vim.fn.stdpath("data") .. "/lazy",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,

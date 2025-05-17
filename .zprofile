@@ -1,11 +1,11 @@
 # If Homebrew is installed via /opt/homebrew (Apple Silicon)  If you're using macOS, you'll want this enabled
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-
 fi
-# Set VIM from Homebrew instead of local unix standard
-export PATH="/opt/homebrew/opt/vim/bin:${PATH}"
-export PATH="/opt/homebrew/opt/llvm/bin:${PATH}"
+
+# Add .local folders to path
+export PATH="${PATH}:$HOME/.local/bin"
+export PATH="${PATH}:$HOME/.local/scripts/"
 
 # Set XDG Base Directory variables
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -21,13 +21,13 @@ export CONFIG="$XDG_CONFIG_HOME"
 export CACHE="$XDG_CACHE_HOME"
 export DATA="$XDG_DATA_HOME"
 export STATE="$XDG_STATE_HOME"
-export SCRIPTS=/usr/local/scripts
 export CODE="${HOME}/Code"
+export DOC="${HOME}/Documents"
 
 # ~/ Clean-up
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export BASHDOTDIR="$XDG_CONFIG_HOME/bash"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 export TERMINFO="$XDG_DATA_HOME/terminfo"
@@ -36,7 +36,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export LESSHISTFILE="-"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
-
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle/config"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
