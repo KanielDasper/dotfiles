@@ -41,7 +41,7 @@ return {
 				"prettier", -- prettier formatter
 				"jq", -- json formatter
 				"stylua", -- lua formatter
-				"selene", -- lua linter
+				"markdownlint", -- markdown linter and formatter
 				"ruff", -- python linter + formatter
 				"jsonlint", -- json linter
 			},

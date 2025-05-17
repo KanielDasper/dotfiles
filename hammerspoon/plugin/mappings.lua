@@ -19,7 +19,7 @@ hs.hotkey.bind({ "alt", "shift" }, "<", function()
 	hs.eventtap.keyStrokes("/")
 end)
 hs.hotkey.bind("ctrl", "2", function()
-	hs.eventtap.keyStrokes("'")
+	hs.eventtap.keyStrokes("@")
 end)
 
 -- Nightlight lumen, timeStart, timeEnd
@@ -27,7 +27,7 @@ hs.redshift.start(2800, "06:00", "05:00")
 hs.hotkey.bind({ "cmd" }, "$", "Toggle Redshift", hs.redshift.toggle)
 
 -- Move to center of screen
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "f", function()
+local function resizeAndCenterWindow()
 	local win = hs.window.focusedWindow()
 	if win then
 		local screen = win:screen()
@@ -38,6 +38,16 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "f", function()
 		win:setFrame(frame)
 		win:centerOnScreen(nil, true, 0.1)
 	end
+end
+
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "f", function()
+	resizeAndCenterWindow()
+end)
+
+-- Open trashbin
+hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
+	hs.execute("open ~/.Trash", true)
+	resizeAndCenterWindow()
 end)
 
 -- Focus WezTerm

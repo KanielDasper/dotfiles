@@ -6,6 +6,7 @@ fi
 # Set VIM from Homebrew instead of local unix standard
 export PATH="/opt/homebrew/opt/vim/bin:${PATH}"
 export PATH="/opt/homebrew/opt/llvm/bin:${PATH}"
+export PATH="${PATH}:$HOME/.local/bin"
 
 # Set XDG Base Directory variables
 export XDG_CONFIG_HOME="${HOME}/.config"

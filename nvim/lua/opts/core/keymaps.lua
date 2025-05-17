@@ -42,7 +42,7 @@ keymap("n", "<leader>y", ":%y+<CR>", { desc = "Yank the whole buffer" })
 -- keymap("v", "<C-e>", ":", { desc = "Enter command mode" })
 
 -- Escape to normal mode - trying with caps lock tap to esc
--- keymap({ "i", "c" }, "jj", "<Esc>", { desc = "Escape to normal mode" })
+keymap({ "i", "c" }, "jj", "<Esc>", { desc = "Escape to normal mode" })
 
 -- QoL center screen with zz
 keymap("n", "J", "mzJ`z")
@@ -93,7 +93,7 @@ keymap("n", "<localleader>w", function()
 	else
 		local name = vim.fn.fnamemodify(filepath, ":t:r")
 		vim.cmd("write")
-		vim.cmd("!pandoc -o " .. name .. ".docx " .. filepath)
+		vim.cmd("!pandoc -o " .. name .. ".docx " .. filepath .. " -f markdown-smart -t docx")
 	end
 end, { desc = "Save and export to Word" })
 
