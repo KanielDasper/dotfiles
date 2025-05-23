@@ -70,6 +70,11 @@ export FZF_CTRL_T_OPTS="
 
 eval "$(fzf --zsh)"
 
+# Find folders with ctrl-f
+sd() {
+    cd "$( find . -mindepth 1 -type d 2>/dev/null | fzf)"
+}
+bindkey -s '^F' 'sd\n'
 
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 
