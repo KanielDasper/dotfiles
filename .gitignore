@@ -19,3 +19,6 @@ tmux/.tmux
 
 # Git
 git/credentials
+
+# Lock files
+nvim/lazy-lock.json
