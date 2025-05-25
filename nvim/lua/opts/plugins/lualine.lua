@@ -2,7 +2,8 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		require("lualine").setup({
+		local statusbar = require("lualine")
+		statusbar.setup({
 			options = {
 				icons_enabled = true,
 				theme = "auto",
@@ -15,7 +16,7 @@ return {
 				ignore_focus = {},
 				always_divide_middle = true,
 				always_show_tabline = true,
-				globalstatus = false,
+				globalstatus = true,
 				refresh = {
 					statusline = 100,
 					tabline = 100,
@@ -24,9 +25,30 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "filename" },
-				lualine_c = { "branch", "diff", "diagnostics" },
-				lualine_x = { "encoding", "filetype" },
+				lualine_b = {
+					"filename",
+				},
+				lualine_c = {
+					"branch",
+					"diff",
+					"diagnostics",
+					{
+						"lsp_status",
+						icon = "", -- f013
+						symbols = {
+							-- Standard unicode symbols to cycle through for LSP progress:
+							spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+							-- Standard unicode symbol for when LSP is done:
+							done = "✓",
+							-- Delimiter inserted between LSP names:
+							separator = " ",
+						},
+					},
+				},
+				lualine_x = {
+					"encoding",
+					"filetype",
+				},
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},

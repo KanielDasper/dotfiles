@@ -53,7 +53,7 @@ return {
 				keymap("n", "<leader>xx", "<cmd>Trouble diagnostics<CR>", opts)
 
 				opts.desc = "Show LSP definitions"
-				keymap("n", "gd", "<cmd>Trouble lsp_definitions<CR>", opts)
+				keymap("n", "gD", "<cmd>Trouble lsp_definitions<CR>", opts)
 
 				opts.desc = "Show LSP implementations"
 				keymap("n", "gi", "<cmd>Trouble lsp_implementations<CR>", opts)
