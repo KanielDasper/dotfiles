@@ -37,7 +37,6 @@ export GIT_PAGER='nvim +Man!'
 # Edit and source with ze
 function ze() {
   local zrc="$CONFIG/zsh/.zshrc"
-  local zpro="$HOME/.zprofile"
   local tmp="$(mktemp)"
 
   sha256sum "$zrc" > "$tmp"
@@ -47,7 +46,6 @@ function ze() {
   if ! sha256sum --check --status "$tmp"; then
     echo "Changes detected. Reloading..."
     source "$zrc"
-    source "$zpro"
   fi
 
   rm -f "$tmp"
@@ -57,6 +55,7 @@ function ze() {
 export FZF_DEFAULT_OPTS="
     --layout reverse
     --style minimal
+    --height 100%
     --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
     --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a
 "
@@ -64,21 +63,14 @@ export FZF_DEFAULT_OPTS="
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview '[[ -d {} ]] && tree -aC {} || bat --style=numbers --color=always {}'
-  --bind 'enter:execute(nvim {})+abort'
+  --bind 'enter:execute(nvim {+})+abort'
   --bind 'ctrl-y:accept'
 "
 
 eval "$(fzf --zsh)"
 
-# Find folders with ctrl-f
-sd() {
-    cd "$( find . -mindepth 1 -type d 2>/dev/null | fzf)"
-}
-bindkey -s '^F' 'sd\n'
-
+source ~/.zprofile
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
