@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 -- Stolen from TJ Devries
 -- gj and gk except for when jumping lines with numbers

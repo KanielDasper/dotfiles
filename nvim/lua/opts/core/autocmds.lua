@@ -1,3 +1,12 @@
+-- quickfix navigation
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		vim.keymap.set("n", "<C-n>", ":cnext<CR><C-W>p", { buffer = true, silent = true })
+		vim.keymap.set("n", "<C-p>", ":cprev<CR><C-W>p", { buffer = true, silent = true })
+	end,
+})
+
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",

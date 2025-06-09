@@ -45,13 +45,6 @@ return {
 			desc = "Git Diff (Hunks)",
 		},
 		{
-			"<leader>q",
-			function()
-				Snacks.bufdelete()
-			end,
-			desc = "Delete Buffer",
-		},
-		{
 			"<leader>lg",
 			function()
 				Snacks.lazygit()
@@ -87,7 +80,7 @@ return {
 			desc = "Git Diff (Hunks)",
 		},
 		{
-			"<leader>q",
+			"<localleader>q",
 			function()
 				Snacks.bufdelete()
 			end,
