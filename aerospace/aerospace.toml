@@ -11,7 +11,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders active_color=0xFF5C6B82 inactive_color=0xff2b3a50 width=3.5 hidpi=on'
+  # 'exec-and-forget borders active_color=0xFF5C6B82 inactive_color=0xff2b3a50 width=3.5 hidpi=on'
 ]
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -117,7 +117,6 @@ alt-9 = 'workspace 9'
 alt-a = 'workspace A' # Arc workspace
 alt-c = 'workspace C' # Calender workspace
 alt-m = 'workspace M' # Mail workspace
-alt-p = 'workspace P' # Preview workspace
 alt-s = 'workspace S' # Spotify workspace
 alt-t = 'workspace T' # Terminal workspace
 
@@ -137,7 +136,6 @@ ctrl-alt-9 = 'move-node-to-workspace 9'
 ctrl-alt-a = 'move-node-to-workspace A'
 ctrl-alt-c = 'move-node-to-workspace C'
 ctrl-alt-m = 'move-node-to-workspace M'
-ctrl-alt-p = 'move-node-to-workspace P'
 ctrl-alt-s = 'move-node-to-workspace S'
 ctrl-alt-t = 'move-node-to-workspace T'
 
@@ -169,16 +167,10 @@ enter = 'mode main'
 esc = 'mode main'
 
 # Apps specific settings
-[[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = [ 'layout floating' ]
+# [[on-window-detected]]
+# if.app-id = 'com.apple.finder'
+# run = [ 'layout floating' ]
 
-[[on-window-detected]]
-if.app-id = 'com.apple.Preview' # Preview
-run = 'move-node-to-workspace P'
-[[on-window-detected]]
-if.app-id = 'com.microsoft.Word' # Preview
-run = 'move-node-to-workspace T'
 [[on-window-detected]]
 if.app-id = 'com.sonos.client' # Sonos
 run = 'move-node-to-workspace S'

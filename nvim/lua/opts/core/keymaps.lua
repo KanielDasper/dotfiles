@@ -59,12 +59,6 @@ map("v", ">", ">gv", { noremap = true, silent = true })
 map("n", "<", "<<g", { noremap = true, silent = true })
 map("n", ">", ">>g", { noremap = true, silent = true })
 
--- Resize panes
-map("n", "<C-Up>", ":resize -2<CR>")
-map("n", "<C-Down>", ":resize +2<CR>")
-map("n", "<C-Left>", ":vertical resize -2<CR>")
-map("n", "<C-Right>", ":vertical resize +2<CR>")
-
 -- Prevent x and d delete from affecting register
 map("n", "x", '"_x', { desc = "Don't save deleted text" })
 -- keymap("n", "d", '"_d', { desc = "Don't save deleted text" })
