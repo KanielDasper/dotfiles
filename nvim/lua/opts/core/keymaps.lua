@@ -22,6 +22,15 @@ map({ "n", "v" }, "k", function()
 	end
 end, { expr = true })
 
+-- Navigate tabs with wincmd + number (can also be done natively in normal mode with {i}gt)
+local wins = "123456789"
+for i = 1, #wins do
+	local key = wins:sub(i, i)
+	map("n", "<C-W>" .. key, function()
+		vim.cmd("norm" .. i .. "gt")
+	end, { noremap = true, silent = true })
+end
+
 map("n", "<leader>rr", ":w<cr><cmd>luafile %<cr>", { desc = "Save and Run luafile" })
 
 -- Move lines visual

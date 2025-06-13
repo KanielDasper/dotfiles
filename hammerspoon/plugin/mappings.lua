@@ -50,6 +50,12 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
 	resizeAndCenterWindow()
 end)
 
+-- Func to open specific folder locations
+-- hs.hotkey.bind({ "ctrl", "cmd" }, "s", function()
+-- 	hs.execute("open ~/Documents/Informationsvidenskab/Speciale/", true)
+-- 	resizeAndCenterWindow()
+-- end)
+
 -- Focus WezTerm
 hs.hotkey.bind("ctrl", "return", function()
 	hs.application.launchOrFocus("WezTerm")
