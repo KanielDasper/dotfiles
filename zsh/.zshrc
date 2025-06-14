@@ -25,6 +25,8 @@ alias vi="nvim"
 alias v="nvim"
 alias :q="exit"
 alias ..="cd .."
+alias va="source .venv/bin/activate"
+alias lg="lazygit"
 alias dockspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock"
 alias fzfman='compgen -c | fzf'
 alias ls="eza -a --color=always --across --git --icons=always --no-user"
