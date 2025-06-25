@@ -1,6 +1,6 @@
 local config = {}
 local cool_fonts = { "IosevkaTerm Nerd Font Mono", "MesloLGL Nerd Font Mono", "JetBrainsMono Nerd Font Mono" }
-local color_schemes = { "Tokyo Night", "Tokyo Night Moon", "Tokyo Night Storm" }
+local color_schemes = { "Tokyo Night Moon", "Tokyo Night Storm" }
 local current_colorscheme = color_schemes[math.random(1, #color_schemes)]
 
 local wezterm = require("wezterm")
@@ -15,15 +15,13 @@ config.color_scheme = current_colorscheme
 
 -- Fonts
 config.font = wezterm.font(cool_fonts[3])
-config.font_size = 16.0
-config.line_height = 1.50
+config.font_size = 15.0
+config.line_height = 1.20
 
 -- General
 config.automatically_reload_config = true
-config.max_fps = 120
-config.animation_fps = 120
-
--- colorscheme from require("appearance")
+config.max_fps = 124
+config.animation_fps = 124
 
 -- Connect homebrew path
 config.set_environment_variables = {

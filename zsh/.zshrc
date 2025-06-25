@@ -31,6 +31,7 @@ alias dockspace="defaults write com.apple.dock persistent-apps -array-add '{tile
 alias fzfman='compgen -c | fzf'
 alias ls="eza -a --color=always --across --git --icons=always --no-user"
 alias globalip="curl http://ipecho.net/plain; echo"
+alias path="echo $PATH | tr ':' '\n'"
 
 # Set neovim as manpager
 export MANPAGER='nvim +Man!'

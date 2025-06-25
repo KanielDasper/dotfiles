@@ -3,10 +3,6 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Add .local folders to path
-export PATH="${PATH}:$HOME/.local/bin"
-export PATH="${PATH}:$HOME/.local/scripts/"
-
 # Set XDG Base Directory variables
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"

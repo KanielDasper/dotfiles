@@ -109,17 +109,16 @@ return {
 		})
 
 		-- Configure pyright
-		lspconfig.pyright.setup({
+		lspconfig.basedpyright.setup({
 			capabilities = capabilities,
 			settings = {
-				pyright = {
-					-- Using Ruff's import organizer
-					disableOrganizeImports = true,
-				},
-				python = {
+				-- Using Ruff's import organizer
+				disableOrganizeImports = true,
+				basedpyright = {
 					analysis = {
 						-- Ignore all files for analysis to exclusively use Ruff for linting
 						ignore = { "*" },
+						typeChecking = "basic",
 					},
 				},
 			},
