@@ -18,7 +18,7 @@ vim.o.cursorline = false
 vim.o.swapfile = false
 vim.o.backup = false
 vim.o.undofile = true
-vim.o.undodir = vim.fn.stdpath("data")
+vim.o.undodir = vim.fn.stdpath("data") .. "/undodir"
 
 vim.o.inccommand = "split"
 

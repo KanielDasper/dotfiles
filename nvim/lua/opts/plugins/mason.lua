@@ -23,35 +23,21 @@ return {
 			},
 		})
 
-		--NOTE: LSPs are configured in lspconfig.lua
-
-		-- local mason_lspconfig = require("mason-lspconfig")
-		-- mason_lspconfig.setup({
-		-- 	-- servers for mason to install
-		-- 	ensure_installed = {
-		-- 		"lua_ls",
-		-- 		"ruff",
-		-- 		"pyright",
-		-- 		"jsonls",
-		-- 	},
-		-- auto install configured servers (with lspconfig)
-		-- 	automatic_installation = true,
-		-- })
-
 		mason_tool_installer.setup({
 			ensure_installed = {
 				-- LSPs
 				"lua_ls",
 				"ruff",
-				"pyright",
+				"basedpyright",
 				"jsonls",
+
 				-- Formatters and linters
-				"prettier", -- prettier formatter
-				"jq", -- json formatter
-				"stylua", -- lua formatter
-				"markdownlint", -- markdown linter and formatter
-				"ruff", -- python linter + formatter
-				"jsonlint", -- json linter
+				"ruff",
+				"prettier",
+				"jq",
+				"stylua",
+				"markdownlint",
+				"jsonlint",
 			},
 		})
 	end,
