@@ -10,7 +10,7 @@ return {
 				html = { "prettier" },
 				yaml = { "prettier" },
 				graphql = { "prettier" },
-				markdown = { "markdownlint" },
+				markdown = { "prettier" },
 				json = { "jq" },
 				lua = { "stylua" },
 				python = { "ruff_format", "ruff_organize_imports" },

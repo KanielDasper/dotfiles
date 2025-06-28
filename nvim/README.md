@@ -1,35 +1,47 @@
 # NVIM Configuration
-My config is built around Python and Lua development. Det sparker bare maks! 
+
+This is my personal NVIM configuration built around Python, Lua and note taking.
 
 ## Plugins
 
-| Plugin                 | Description (Optional)                 |
-|------------------------|----------------------------------------|
-| auto-pairs.lua         | For easy brackets                      |
-| auto-session.lua       | Save NVIM sessions                     |
-| blink.lua              | Async Auto-completion with Rust        |
-| colorscheme.lua        | Tokyo Night for now                    |
-| conform.lua            | Formatting                             |
-| linting.lua            | Linting                                |
-| lualine.lua            | UI plugin                              |
-| mason.lua              | Manage LSP, Formatters and linters     |
-| lspconfig.lua          | Attach LSP servers                     |
-| nvim-dap.lua           | Interactive debugging                  |
-| snacks.lua             | Picker, Zen mode, Startscreen, LazyGit |
-| surround.lua           | Surround like with tpope               |
-| todo-comments.lua      | Highlighted todo-comments              |
-| treesitter-context.lua | Show contextbar in file                |
-| treesitter.lua         | Better Syntax highlighting             |
-| trouble.lua            | Pull up code diagnostics               |
-| undotree.lua           | Interactive undotree                   |
-| vimwiki.lua            | Daily notes and general knowledge base |
-| buffer-manager.lua     | Quick buffer switching and deletion    |
-| oil.lua                | The best file manager to exist         |
-| gitsigns.lua           | Show diffs in column                   |
+| Plugin            | Description (Optional)           |
+| ----------------- | -------------------------------- |
+| auto-pairs.lua    | For easy brackets                |
+| auto-session.lua  | Save NVIM sessions               |
+| blink.lua         | Async Auto-completion with Rust  |
+| colorscheme.lua   | Tokyo Night                      |
+| conform.lua       | Code formatter                   |
+| csvviewer.lua     | Organize csv-files               |
+| dadbod.lua        | database connection, UI and comp |
+| gitsigns.lua      | Diffs and git integration        |
+| iron.lua          | interactive REPL                 |
+| lazydev.lua       | Nvim and lua QoL                 |
+| linting.lua       | Nvim-lint                        |
+| lualine.lua       | status line                      |
+| mason.lua         | Manage binaries                  |
+| nvim-dap.lua      | Interactive debugging            |
+| oil.lua           | The best file manager            |
+| snacks.lua        | Picker, LazyGit and utils        |
+| surround.lua      | Surround like with tpope         |
+| todo-comments.lua | Highlighted todo-comments        |
+| treesitter.lua    | Better syntax highlighting       |
+| trouble.lua       | Better quickfix bar              |
+| vim-sleuth.lua    | Automate identation              |
+| vimwiki.lua       | Notes and knowledgebase          |
+
+## LSP
+
+The LSP is structured around Neovim 0.11+ with:
+
+```lua
+vim.lsp.enable({})
+```
+
+New LSPs should have their own configuration in ~/.config/lua/lsp/..
 
 ## Dependencies
-- Neovim 0.10+
+
+- Neovim 0.11+
 - curl
 - git
 - fd
-- Rust & Cargo

@@ -122,5 +122,12 @@ return {
 			end,
 			desc = "Man Pages",
 		},
+		{
+			"<leader><leader>",
+			function()
+				Snacks.picker.buffers({ layout = "select" })
+			end,
+			desc = "Buffers",
+		},
 	},
 }
