@@ -47,13 +47,12 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "FocusGained", "BufEnter", "WinEnte
 	end,
 })
 
--- Save to registers 1 - 9 on yank
-vim.cmd([[
-function! YankShift()
-  for i in range(9, 1, -1)
-    call setreg(i, getreg(i - 1))
-  endfor
-endfunction
-
-au TextYankPost * if v:event.operator == 'y' | call YankShift() | endif
-]])
+-- Oil supports lsp renaming with snacks
+vim.api.nvim_create_autocmd("User", {
+	pattern = "OilActionsPost",
+	callback = function(event)
+		if event.data.actions.type == "move" then
+			Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+		end
+	end,
+})

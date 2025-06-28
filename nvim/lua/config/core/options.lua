@@ -2,6 +2,16 @@
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- tab and shift width
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.breakindent = true -- Preserve indentation
+vim.o.autoindent = true
+vim.o.smarttab = true
+
 -- Can be toggled with snacks.nvim
 vim.o.wrap = true
 vim.o.cursorline = false
@@ -31,7 +41,7 @@ vim.o.foldlevel = 99 -- Open most folds by default
 vim.o.foldcolumn = "0"
 
 -- Give the column some space
-vim.o.signcolumn = "yes:2"
+vim.o.signcolumn = "yes:1"
 
 --split windows
 vim.o.splitright = true --split vertical window to the right

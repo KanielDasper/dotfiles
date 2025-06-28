@@ -23,9 +23,6 @@ return {
 			"<leader>ff",
 			function()
 				Snacks.picker.smart({
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
 					exclude = { "*.pdf", "*.png" },
 				})
 			end,
@@ -54,9 +51,6 @@ return {
 			function()
 				Snacks.picker.files({
 					cwd = vim.fn.stdpath("data") .. "/lazy",
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
 				})
 			end,
 			desc = "Find Plugin Files",
@@ -75,25 +69,6 @@ return {
 			end,
 			desc = "Grep Selection/Word",
 			mode = { "n", "x" },
-		},
-		{
-			"<leader>fr",
-			function()
-				Snacks.picker.registers({
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-					layout = "select",
-				})
-			end,
-			desc = "Find Registers",
-		},
-		{
-			"<leader>fk",
-			function()
-				Snacks.picker.keymaps({ layout = "select" })
-			end,
-			desc = "Keymaps Picker",
 		},
 		{
 			"<leader>fh",

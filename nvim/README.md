@@ -26,7 +26,6 @@ This is my personal NVIM configuration built around Python, Lua and note taking.
 | todo-comments.lua | Highlighted todo-comments        |
 | treesitter.lua    | Better syntax highlighting       |
 | trouble.lua       | Better quickfix bar              |
-| vim-sleuth.lua    | Automate identation              |
 | vimwiki.lua       | Notes and knowledgebase          |
 
 ## LSP

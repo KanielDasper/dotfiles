@@ -7,7 +7,6 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		input = { enabled = true },
-		indent = { enabled = true },
 	},
 	keys = {
 		{
