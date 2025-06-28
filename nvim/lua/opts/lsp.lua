@@ -18,10 +18,6 @@ vim.diagnostic.config({
 	-- virtual_lines = true,
 	virtual_text = true,
 	update_in_insert = true,
-	float = {
-		source = "if_many",
-		border = "rounded",
-	},
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = " ",
@@ -84,7 +80,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 
 		opts.desc = "Restart LSP server"
-		vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+		vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
 
 		vim.keymap.set("i", "<C-i>", function()
 			vim.lsp.buf.signature_help({ border = "rounded" })
