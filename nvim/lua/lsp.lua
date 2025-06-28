@@ -2,7 +2,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"basedpyright",
 	"jsonls",
-	"ruff",
+	-- "ruff",
 })
 
 vim.o.foldmethod = "expr"

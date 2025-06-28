@@ -22,15 +22,6 @@ map({ "n", "v" }, "k", function()
 	end
 end, { expr = true })
 
--- Navigate tabs with wincmd + number (can also be done natively in normal mode with {i}gt)
-local wins = "123456789"
-for i = 1, #wins do
-	local key = wins:sub(i, i)
-	map("n", "<C-W>" .. key, function()
-		vim.cmd("norm" .. i .. "gt")
-	end, { noremap = true, silent = true })
-end
-
 map("n", "<leader>rr", ":w<cr><cmd>luafile %<cr>", { desc = "Save and Run luafile" })
 
 -- Move lines visual
@@ -45,15 +36,6 @@ map("n", "<C-w>Q", ":qa<CR>", { desc = "Quit all open windows" })
 -- yanking
 map("n", "<leader>y", ":%y+<CR>", { desc = "Yank the whole buffer" })
 
--- Enter cmd mode - Should not use this bad habit
--- keymap("n", "<C-e>", ":", { desc = "Enter command mode" })
--- keymap("i", "<C-e>", "<Esc>:", { desc = "Enter command mode" })
--- keymap("v", "<C-e>", ":", { desc = "Enter command mode" })
-map("n", "<C-f>", "q:i", { desc = "Open command history window" })
-
--- Escape to normal mode - trying with caps lock tap to esc
-map({ "i", "c" }, "jj", "<Esc>", { desc = "Escape to normal mode" })
-
 -- QoL center screen with zz
 map("n", "J", "mzJ`z")
 map("n", "n", "nzzzv")
@@ -67,10 +49,8 @@ map("v", ">", ">gv", { noremap = true, silent = true })
 map("n", "<", "<<g", { noremap = true, silent = true })
 map("n", ">", ">>g", { noremap = true, silent = true })
 
--- Prevent x and d delete from affecting register
+-- Prevent x delete from affecting register
 map("n", "x", '"_x', { desc = "Don't save deleted text" })
--- keymap("n", "d", '"_d', { desc = "Don't save deleted text" })
--- keymap("v", "p", '"_dp', { desc = "Don't save deleted text" })
 
 -- Undo remap
 map("n", "U", "<C-r>", { desc = "Undo" })
@@ -112,10 +92,8 @@ map("n", "<leader>dt", function()
 end, { desc = "Toggle diffview with window" })
 
 -- Copy filepath to the clipboard
-map("n", "<localleader>dd", function()
+map("n", "<localleader>d", function()
 	local filePath = vim.fn.expand("%:p")
 	vim.fn.setreg("+", filePath)
 	print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })
-
-map("n", "<localleader>d", ":echo getcwd()<cr>", { desc = "Echo current working directory" })

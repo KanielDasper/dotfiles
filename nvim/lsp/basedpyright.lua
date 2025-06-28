@@ -14,11 +14,13 @@ return {
 		basedpyright = {
 			analysis = {
 				autoSearchPaths = true,
-				typeCheckingMode = "basic",
-				diagnosticMode = "workspace",
+				typeCheckingMode = "strict",
+				diagnosticMode = "openFilesOnly",
 				useLibraryCodeForTypes = true,
 				inlayHints = {
 					callArgumentNames = true,
+					variableTypes = true,
+					functionReturnTypes = true,
 				},
 			},
 		},

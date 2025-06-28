@@ -36,9 +36,6 @@ return {
 			function()
 				Snacks.picker.files({
 					cwd = vim.fn.stdpath("config"),
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
 				})
 			end,
 			desc = "Find Config File",
@@ -46,11 +43,8 @@ return {
 		{
 			"<leader>fw",
 			function()
-				Snacks.picker.files({
+				Snacks.picker.grep({
 					cwd = "~/Documents/Vimwiki/",
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
 				})
 			end,
 			desc = "Find Vimwiki File",
