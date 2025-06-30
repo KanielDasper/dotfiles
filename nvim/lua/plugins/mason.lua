@@ -34,6 +34,7 @@ return {
 				-- Formatters and linters
 				"ruff",
 				"prettier",
+				"swiftlint",
 				"jq",
 				"stylua",
 				"markdownlint",

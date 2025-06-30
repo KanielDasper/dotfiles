@@ -2,6 +2,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"basedpyright",
 	"jsonls",
+	"sourcekit",
 	-- "ruff",
 })
 

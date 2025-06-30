@@ -11,6 +11,7 @@ return {
 				yaml = { "prettier" },
 				graphql = { "prettier" },
 				markdown = { "prettier" },
+				swift = { "swiftformat" },
 				json = { "jq" },
 				lua = { "stylua" },
 				python = { "ruff_format", "ruff_organize_imports" },
