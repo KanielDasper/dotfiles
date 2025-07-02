@@ -19,10 +19,9 @@ return {
 				{ "<", "<cmd>lua require('quicker').collapse()<CR>", desc = "Collapse quickfix content" },
 			},
 			-- Callback function to run any custom logic or keymaps for the quickfix buffer
-			on_qf = function(bufnr) end,
 			edit = {
 				-- Enable editing the quickfix like a normal buffer
-				enabled = true,
+				enabled = false,
 				-- Set to true to write buffers after applying edits.
 				-- Set to "unmodified" to only write unmodified buffers.
 				autosave = "unmodified",
@@ -41,26 +40,6 @@ return {
 				-- When quickfix window is open, scroll to closest item to the cursor
 				enabled = false,
 			},
-			-- Map of quickfix item type to icon
-			type_icons = {
-				E = "󰅚 ",
-				W = "󰀪 ",
-				I = " ",
-				N = " ",
-				H = " ",
-			},
-			-- Border characters
-			borders = {
-				vert = "┃",
-				-- Strong headers separate results from different files
-				strong_header = "━",
-				strong_cross = "╋",
-				strong_end = "┫",
-				-- Soft headers separate results within the same file
-				soft_header = "╌",
-				soft_cross = "╂",
-				soft_end = "┨",
-			},
 			-- How to trim the leading whitespace from results. Can be 'all', 'common', or false
 			trim_leading_whitespace = "common",
 			-- Maximum width of the filename column
@@ -76,14 +55,16 @@ return {
 
 	-- Toggle quickfixlist
 	vim.keymap.set("n", "<leader>q", function()
-		require("quicker").toggle()
+		require("quicker").toggle({
+			focus = true,
+		})
 	end, {
 		desc = "Toggle quickfix",
 	}),
 
 	-- Toggle loclist
 	vim.keymap.set("n", "<leader>l", function()
-		require("quicker").toggle({ loclist = true })
+		require("quicker").toggle({ loclist = true, focus = true })
 	end, {
 		desc = "Toggle loclist",
 	}),
