@@ -5,3 +5,5 @@ require("config.lazy")
 require("config.core")
 require("lsp")
 require("float_term")
+
+vim.cmd("colorscheme tokyonight-moon")
