@@ -40,27 +40,6 @@ require("lazy").setup({
 		},
 	},
 	rocks = {
-		-- Luarocks support disabled
-		enabled = false,
-	},
-	custom_keys = {
-		-- Local keymaps for the :Lazy dashboard
-		["<localleader>l"] = {
-			function(plugin)
-				require("lazy.util").float_term({ "lazygit", "log" }, {
-					cwd = plugin.dir,
-				})
-			end,
-			desc = "Open lazygit log",
-		},
-		["<localleader>i"] = {
-			function(plugin)
-				Util.notify(vim.inspect(plugin), {
-					title = "Inspect " .. plugin.name,
-					lang = "lua",
-				})
-			end,
-			desc = "Inspect Plugin",
-		},
+		enabled = false, -- Luarocks support disabled
 	},
 })

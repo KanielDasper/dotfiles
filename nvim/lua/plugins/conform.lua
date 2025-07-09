@@ -18,16 +18,14 @@ return {
 				["*"] = { "trim_whitespace", "trim_newlines" },
 			},
 			format_on_save = {
-				lsp_fallback = true,
-				async = false,
+				lsp_format = "fallback",
 				timeout_ms = 500,
 			},
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>js", function()
 			conform.format({
-				lsp_fallback = true,
-				async = false,
+				lsp_format = "fallback",
 				timeout_ms = 500,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
