@@ -12,16 +12,12 @@ return {
 					disable = { "help" },
 				},
 				modules = {},
-				-- enable indentation
 				indent = { enable = true },
 
-				-- Ignore these languages
 				ignore_install = {},
-
-				auto_install = true,
+				auto_install = false,
 				sync_install = false,
 
-				-- ensure these languages parsers are installed
 				ensure_installed = {
 					"json",
 					"yaml",

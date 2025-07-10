@@ -14,7 +14,8 @@ vim.o.smarttab = true
 
 -- Can be toggled with snacks.nvim
 vim.o.wrap = true
-vim.o.cursorline = false
+vim.o.cursorline = true
+vim.o.cursorlineopt = "number"
 
 -- Backup files for buffers, only use undo
 vim.o.swapfile = false

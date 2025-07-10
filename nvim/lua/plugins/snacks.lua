@@ -17,20 +17,6 @@ return {
 			desc = "Lazygit",
 		},
 		{
-			"<leader>ll",
-			function()
-				Snacks.lazygit.log()
-			end,
-			desc = "Lazygit Logs",
-		},
-		{
-			"<leader>gb",
-			function()
-				Snacks.picker.git_branches()
-			end,
-			desc = "Git Branch Picker",
-		},
-		{
 			"<leader>gd",
 			function()
 				Snacks.picker.git_diff()

@@ -29,6 +29,18 @@ vim.diagnostic.config({
 	},
 })
 
+-- Loclist is populated with buffer diagnostics
+vim.diagnostic.handlers.loclist = {
+	show = function(_, _, _, opts)
+		-- Generally don't want it to open on every update
+		---@diagnostic disable-next-line: undefined-field
+		opts.loclist.open = opts.loclist.open or false
+		local winid = vim.api.nvim_get_current_win()
+		vim.diagnostic.setloclist(opts.loclist)
+		vim.api.nvim_set_current_win(winid)
+	end,
+}
+
 -- Autocmd for keymaps when LSP is active
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),

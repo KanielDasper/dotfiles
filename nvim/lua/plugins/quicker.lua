@@ -54,7 +54,7 @@ return {
 	end,
 
 	-- Toggle quickfixlist
-	vim.keymap.set("n", "<leader>q", function()
+	vim.keymap.set("n", "<leader>qq", function()
 		require("quicker").toggle({
 			focus = true,
 		})
@@ -63,7 +63,7 @@ return {
 	}),
 
 	-- Toggle loclist
-	vim.keymap.set("n", "<leader>l", function()
+	vim.keymap.set("n", "<leader>ll", function()
 		require("quicker").toggle({ loclist = true, focus = true })
 	end, {
 		desc = "Toggle loclist",
