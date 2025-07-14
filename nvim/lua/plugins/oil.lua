@@ -41,6 +41,15 @@ return {
 			-- Open parent directory in current window
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 			vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+			-- Close Oil with "q"
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "oil",
+				callback = function()
+					vim.keymap.set("n", "<leader>q", function()
+						vim.api.nvim_buf_delete(0, { force = true })
+					end, { noremap = true, silent = true, buffer = 0 })
+				end,
+			})
 		end,
 	},
 }

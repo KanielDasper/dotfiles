@@ -10,6 +10,7 @@ return {
 				html = { "prettier" },
 				yaml = { "prettier" },
 				graphql = { "prettier" },
+				typescript = { "prettier" },
 				markdown = { "prettier" },
 				swift = { "swiftformat" },
 				json = { "jq" },
