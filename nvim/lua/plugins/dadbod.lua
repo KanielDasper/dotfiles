@@ -18,6 +18,8 @@ return {
 			},
 		},
 	},
+	-- HACK: To add a database file: Use add database connection
+	-- if its sqlite3 --> sqlite:mydatabase.sqlite3
 	init = function()
 		vim.keymap.set("n", "<localleader>db", "<Cmd>DBUIToggle<CR>", { desc = "Dad[B]od UI", silent = true })
 		-- DBUI configuration can be put here

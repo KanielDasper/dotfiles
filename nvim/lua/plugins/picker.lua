@@ -1,3 +1,5 @@
+local exlcude_files = { "*.pdf", "*.png" }
+
 return {
 	"folke/snacks.nvim",
 	---@type snacks.Config
@@ -22,8 +24,8 @@ return {
 		{
 			"<leader>ff",
 			function()
-				Snacks.picker.smart({
-					exclude = { "*.pdf", "*.png" },
+				Snacks.picker.files({
+					exclude = exlcude_files,
 				})
 			end,
 			desc = "Find Files",
