@@ -75,18 +75,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gD", "<cmd>Trouble lsp_definitions<CR>", opts)
 
 		opts.desc = "Show LSP implementations"
-		vim.keymap.set("n", "gi", "<cmd>Trouble lsp_implementations<CR>", opts)
+		vim.keymap.set("n", "gri", "<cmd>Trouble lsp_implementations<CR>", opts)
 
 		opts.desc = "Show LSP type definitions"
-		vim.keymap.set("n", "gT", "<cmd>Trouble lsp_type_definitions<CR>", opts)
+		vim.keymap.set("n", "grt", "<cmd>Trouble lsp_type_definitions<CR>", opts)
 
 		opts.desc = "Show available code actions"
-		vim.keymap.set("n", "<leader>ca", function()
-			require("tiny-code-action").code_action()
-		end, { noremap = true, silent = true })
+		vim.keymap.set("n", "gra", vim.lsp.buf.code_action, opts)
 
 		opts.desc = "LSP intelligent rename symbol"
 		vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
+
+		opts.desc = "LSP document symbol"
+		vim.keymap.set("n", "gO", "<cmd>Trouble lsp_document_symbols<CR>", opts)
 
 		opts.desc = "Show documentation on hover"
 		vim.keymap.set("n", "K", function()

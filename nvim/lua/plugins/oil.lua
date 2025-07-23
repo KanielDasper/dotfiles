@@ -45,7 +45,7 @@ return {
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "oil",
 				callback = function()
-					vim.keymap.set("n", "<leader>q", function()
+					vim.keymap.set("n", "q", function()
 						vim.api.nvim_buf_delete(0, { force = true })
 					end, { noremap = true, silent = true, buffer = 0 })
 				end,
