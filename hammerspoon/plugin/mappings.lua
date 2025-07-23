@@ -18,9 +18,9 @@ end)
 hs.hotkey.bind({ "alt", "shift" }, "<", function()
 	hs.eventtap.keyStrokes("/")
 end)
-hs.hotkey.bind("ctrl", "2", function()
-	hs.eventtap.keyStrokes("@")
-end)
+-- hs.hotkey.bind("ctrl", "2", function()
+-- 	hs.eventtap.keyStrokes("@")
+-- end)
 
 -- Nightlight lumen, timeStart, timeEnd
 hs.redshift.start(2800, "06:00", "05:00")
