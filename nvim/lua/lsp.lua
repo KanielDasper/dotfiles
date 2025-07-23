@@ -9,8 +9,11 @@ vim.lsp.enable({
 
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("blink.cmp").get_lsp_capabilities()
+
+-- All lsp's should have completion capabilities and use .git as rootmarkers
 vim.lsp.config("*", {
 	capabilities = capabilities,
 	root_markers = { ".git" },
@@ -30,19 +33,6 @@ vim.diagnostic.config({
 	},
 })
 
--- Loclist is populated with buffer diagnostics
-vim.diagnostic.handlers.loclist = {
-	show = function(_, _, _, opts)
-		-- Generally don't want it to open on every update
-		---@diagnostic disable-next-line: undefined-field
-		opts.loclist.open = opts.loclist.open or false
-		local winid = vim.api.nvim_get_current_win()
-		vim.diagnostic.setloclist(opts.loclist)
-		vim.api.nvim_set_current_win(winid)
-	end,
-}
-
--- Autocmd for keymaps when LSP is active
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(event)

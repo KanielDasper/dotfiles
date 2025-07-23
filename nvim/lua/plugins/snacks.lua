@@ -7,6 +7,7 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		input = { enabled = true },
+		notifier = { enabled = true, style = "minimal" },
 	},
 	keys = {
 		{
@@ -36,6 +37,13 @@ return {
 				Snacks.bufdelete()
 			end,
 			desc = "Delete Buffer",
+		},
+		{
+			"<leader>n",
+			function()
+				Snacks.notifier.show_history()
+			end,
+			desc = "Notification History",
 		},
 	},
 	init = function()
