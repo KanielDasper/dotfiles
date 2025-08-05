@@ -23,6 +23,7 @@ map({ "n", "v" }, "k", function()
 end, { expr = true })
 
 map("n", "<leader>rr", ":w<cr><cmd>luafile %<cr>", { desc = "Save and Run luafile" })
+map("n", "<leader>lg", "<cmd>Git<cr>", { desc = "Open Fugitive" })
 
 -- Move lines visual
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
@@ -57,39 +58,6 @@ map("n", "U", "<C-r>", { desc = "Undo" })
 
 -- Clear search highlight
 map("n", "<Esc>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
-
--- Unmaps Q in normal mode
-map("n", "Q", "<nop>", { desc = "Unmaps Q in normal mode" })
-
--- Save document to word
-map("n", "<localleader>w", function()
-	local filepath = vim.fn.expand("%:p")
-	if filepath == "" then
-		vim.ui.input({ prompt = "Enter filename for unsaved buffer (with extension): " }, function(input)
-			if input and input ~= "" then
-				vim.cmd("write " .. input)
-				local name = vim.fn.fnamemodify(input, ":t:r")
-				vim.cmd("!pandoc -o " .. name .. ".docx " .. input)
-			else
-				print("No filename provided. Aborting.")
-			end
-		end)
-	else
-		local name = vim.fn.fnamemodify(filepath, ":t:r")
-		vim.cmd("write")
-		vim.cmd("!pandoc -o " .. name .. ".docx " .. filepath .. " -f markdown-smart -t docx")
-	end
-end, { desc = "Save and export to Word" })
-
--- Toggeable diff between two open windows
-map("n", "<leader>dt", function()
-	local is_diff = vim.wo.diff
-	if is_diff then
-		vim.cmd("windo diffoff")
-	else
-		vim.cmd("windo diffthis")
-	end
-end, { desc = "Toggle diffview with window" })
 
 -- Copy filepath to the clipboard
 map("n", "<localleader>d", function()
