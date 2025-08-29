@@ -16,17 +16,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Open help in new buffer and list it in the buffer menu
-vim.api.nvim_create_autocmd("BufWinEnter", {
-	pattern = "*",
-	callback = function(event)
-		if vim.bo[event.buf].filetype == "help" then
-			vim.bo[event.buf].buflisted = true
-			vim.cmd.only()
-		end
-	end,
-})
-
 local numbertoggle = vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "FocusLost", "BufLeave", "WinLeave", "CmdlineEnter" }, {

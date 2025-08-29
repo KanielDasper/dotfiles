@@ -22,7 +22,7 @@ return {
 	},
 	keys = {
 		{
-			"<leader>ff",
+			"<leader>f",
 			function()
 				Snacks.picker.files({
 					exclude = exlcude_files,
@@ -31,7 +31,7 @@ return {
 			desc = "Find Files",
 		},
 		{
-			"<leader>fc",
+			"<leader>.",
 			function()
 				Snacks.picker.files({
 					cwd = vim.fn.stdpath("config"),
@@ -40,7 +40,7 @@ return {
 			desc = "Find Config File",
 		},
 		{
-			"<leader>fw",
+			"<leader>w",
 			function()
 				Snacks.picker.grep({
 					cwd = "~/Documents/Vimwiki/",
@@ -49,49 +49,18 @@ return {
 			desc = "Find Vimwiki File",
 		},
 		{
-			"<leader>fp",
-			function()
-				Snacks.picker.files({
-					cwd = vim.fn.stdpath("data") .. "/lazy",
-				})
-			end,
-			desc = "Find Plugin Files",
-		},
-		{
-			"<leader>fg",
+			"<leader>r",
 			function()
 				Snacks.picker.grep()
 			end,
 			desc = "Grep Word",
 		},
 		{
-			"<leader>fs",
-			function()
-				Snacks.picker.grep_word()
-			end,
-			desc = "Grep Selection/Word",
-			mode = { "n", "x" },
-		},
-		{
-			"<leader>fh",
+			"<leader>h",
 			function()
 				Snacks.picker.help()
 			end,
 			desc = "Help Pages",
-		},
-		{
-			"<leader>fi",
-			function()
-				Snacks.picker.icons()
-			end,
-			desc = "Choose icons",
-		},
-		{
-			"<leader>fm",
-			function()
-				Snacks.picker.man()
-			end,
-			desc = "Man Pages",
 		},
 		{
 			"<leader><leader>",

@@ -4,7 +4,7 @@ return {
 		picker_integration = true,
 		keymaps = {
 			-- NOTE: Only using the picker dashboard with <leader>fv
-			prefix = "<leader>fv",
+			prefix = "<leader>p",
 			run_file = false, -- Run current file (<leader>xr)
 			run_selection = false, -- Run selected code (<leader>xs)
 			run_function = false, -- Run function (<leader>xf)

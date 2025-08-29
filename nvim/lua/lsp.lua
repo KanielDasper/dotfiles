@@ -84,9 +84,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.buf.hover({ border = "rounded" })
 		end, opts)
 
-		opts.desc = "Restart LSP server"
-		vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
-
 		vim.keymap.set("i", "<C-i>", function()
 			vim.lsp.buf.signature_help({ border = "rounded" })
 		end, opts)

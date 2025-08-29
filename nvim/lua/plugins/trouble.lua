@@ -8,7 +8,6 @@ return {
 	keys = {
 		-- None LSP-dependent keymaps
 		{ "<leader>xs", "<cmd>Trouble symbols toggle<CR>", desc = "Open trouble quickfix list" },
-		{ "<leader>ft", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
 		{
 			"<leader>xl",
 			"<cmd>Trouble lsp toggle fold_close_all win = {focus=false, position=right}<cr>",
