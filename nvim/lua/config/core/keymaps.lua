@@ -22,8 +22,6 @@ map({ "n", "v" }, "k", function()
 	end
 end, { expr = true })
 
-map("n", "<leader>g", "<cmd>Git<cr>", { desc = "Open Fugitive" })
-
 -- Move lines visual
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })

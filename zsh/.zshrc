@@ -30,6 +30,7 @@ alias lg="lazygit"
 alias dockspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock"
 alias fzfman='compgen -c | fzf'
 alias ls="eza -a --color=always --across --git --icons=always --no-user"
+alias tree="eza --tree"
 alias globalip="curl http://ipecho.net/plain; echo"
 alias path="echo $PATH | tr ':' '\n'"
 
