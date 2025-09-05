@@ -23,11 +23,10 @@ return {
 			})
 
 			-- Keymaps for dap
-			vim.keymap.set("n", "<space>b", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+			vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
 			vim.keymap.set("n", "<leader>B", function()
 				dap.toggle_breakpoint(vim.fn.input("Breakpoint condition: "))
 			end)
-			vim.keymap.set("n", "<space>gb", dap.run_to_cursor, { desc = "Run debugger to cursor pos" })
 			vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Step into" })
 			vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Step over" })
 			vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Step out" })

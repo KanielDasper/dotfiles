@@ -56,10 +56,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
 		opts.desc = "Show LSP diagnostics"
-		vim.keymap.set("n", "<leader>dd", "<cmd>Namu diagnostics buffers<CR>", opts)
+		vim.keymap.set("n", "<leader>dd", "<cmd>Trouble diagnostics filter.buf=0<CR>", opts)
 
 		opts.desc = "Show LSP workspace diagnostics"
-		vim.keymap.set("n", "<leader>xx", "<cmd>Namu diagnostics workspace<CR>", opts)
+		vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", opts)
 
 		opts.desc = "Show LSP definitions"
 		vim.keymap.set("n", "gD", "<cmd>Trouble lsp_definitions<CR>", opts)

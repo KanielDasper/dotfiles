@@ -11,7 +11,7 @@ return {
 	},
 	keys = {
 		{
-			"<localleader>q",
+			"<leader>q",
 			function()
 				Snacks.bufdelete()
 			end,

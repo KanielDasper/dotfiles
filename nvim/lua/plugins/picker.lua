@@ -40,7 +40,7 @@ return {
 			desc = "Find Config File",
 		},
 		{
-			"<leader>w",
+			"<leader>W",
 			function()
 				Snacks.picker.grep({
 					cwd = "~/Documents/Vimwiki/",
