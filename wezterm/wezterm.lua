@@ -1,15 +1,13 @@
 local config = {}
 local cool_fonts = { "IosevkaTerm Nerd Font Mono", "MesloLGL Nerd Font Mono", "JetBrainsMono Nerd Font Mono" }
--- local color_schemes = { "Tokyo Night Moon", "Tokyo Night Storm" }
--- local current_colorscheme = color_schemes[math.random(1, #color_schemes)]
-local current_colorscheme = "Tokyo Night"
+local current_colorscheme = "Tokyo Night Storm"
 
 local wezterm = require("wezterm")
 
 -- Window customization
 config.window_decorations = "RESIZE"
 -- config.macos_window_background_blur = 30
-config.window_background_opacity = 0.7
+-- config.window_background_opacity = 0.7
 
 -- Colorscheme
 config.color_scheme = current_colorscheme
