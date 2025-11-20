@@ -14,15 +14,14 @@ HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 HIST_STAMPS="yyyy-mm-dd"
 plugins=(
-	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
 source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Aliases
-alias vi="nvim"
 alias v="nvim"
+alias vi="nvim"
 alias :q="exit"
 alias ..="cd .."
 alias va="source .venv/bin/activate"

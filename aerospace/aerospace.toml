@@ -114,8 +114,8 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
 # Letter workspaces
-alt-a = 'workspace A' # Arc workspace
-alt-t = 'workspace T' # Terminal workspace
+# alt-a = 'workspace A' # Arc workspace
+# alt-t = 'workspace T' # Terminal workspace
 # alt-c = 'workspace C' # Calender workspace
 # alt-m = 'workspace M' # Mail workspace
 # alt-s = 'workspace S' # Spotify workspace
@@ -133,14 +133,16 @@ ctrl-alt-8 = 'move-node-to-workspace 8'
 ctrl-alt-9 = 'move-node-to-workspace 9'
 
 # Move to workspaces- Letters
-ctrl-alt-a = 'move-node-to-workspace A'
-ctrl-alt-t = 'move-node-to-workspace T'
+# ctrl-alt-a = 'move-node-to-workspace A'
+# ctrl-alt-t = 'move-node-to-workspace T'
 # ctrl-alt-c = 'move-node-to-workspace C'
 # ctrl-alt-m = 'move-node-to-workspace M'
 # ctrl-alt-s = 'move-node-to-workspace S'
 
-alt-q = 'layout floating tiling' # Toggle between floating and tiling layout
-alt-r = 'workspace-back-and-forth'
+alt-f = 'layout floating tiling' # Toggle between floating and tiling layout
+alt-tab = 'workspace-back-and-forth'
+alt-cmd-m = 'resize smart -50'
+alt-cmd-i = 'resize smart +50'
 ctrl-alt-tab = 'move-workspace-to-monitor --wrap-around next'
 # alt-f = 'fullscreen --no-outer-gaps' # Make tiled window fullscreen
 
@@ -164,12 +166,12 @@ esc = 'mode main'
 # enter = 'mode main'
 # esc = 'mode main'
 
-[[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm' # WezTerm
-run = 'move-node-to-workspace T'
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser' # Arc
-run = 'move-node-to-workspace A'
+# [[on-window-detected]]
+# if.app-id = 'com.github.wez.wezterm' # WezTerm
+# run = 'move-node-to-workspace T'
+# [[on-window-detected]]
+# if.app-id = 'company.thebrowser.Browser' # Arc
+# run = 'move-node-to-workspace A'
 # Apps specific settings
 # [[on-window-detected]]
 # if.app-id = 'com.apple.finder'
