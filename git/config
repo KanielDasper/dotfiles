@@ -7,7 +7,7 @@
 	st = status
 	cm = commit -m
 	d = difftool -y
-    m = mergetool
+  m = mergetool
 [diff]
 	tool = nvimdiff
 [merge]
@@ -22,5 +22,4 @@
 [difftool "nvimdiff"]
     cmd = nvim -d "$LOCAL" "$REMOTE"
 [mergetool "nvimdiff"]
-    cmd = nvim -d "$LOCAL" "$REMOTE" "$BASE" "$MERGED" -c "wincmd w"
     trustExitCode = true

@@ -3,23 +3,23 @@ local map = vim.keymap.set
 -- Stolen from TJ Devries
 -- gj and gk except for when jumping lines with numbers
 map({ "n", "v" }, "j", function()
-	local count = vim.v.count
+  local count = vim.v.count
 
-	if count == 0 then
-		return "gj"
-	else
-		return "j"
-	end
+  if count == 0 then
+    return "gj"
+  else
+    return "j"
+  end
 end, { expr = true })
 
 map({ "n", "v" }, "k", function()
-	local count = vim.v.count
+  local count = vim.v.count
 
-	if count == 0 then
-		return "gk"
-	else
-		return "k"
-	end
+  if count == 0 then
+    return "gk"
+  else
+    return "k"
+  end
 end, { expr = true })
 
 -- Move lines visual
@@ -58,7 +58,7 @@ map("n", "<Esc>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
 
 -- Copy filepath to the clipboard
 map("n", "<localleader>d", function()
-	local filePath = vim.fn.expand("%:p")
-	vim.fn.setreg("+", filePath)
-	print("File path copied to clipboard: " .. filePath)
+  local filePath = vim.fn.expand("%:p")
+  vim.fn.setreg("+", filePath)
+  print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })

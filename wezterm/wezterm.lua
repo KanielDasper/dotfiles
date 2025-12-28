@@ -13,8 +13,8 @@ config.window_decorations = "RESIZE"
 config.color_scheme = current_colorscheme
 
 -- Fonts
-config.font = wezterm.font(cool_fonts[3])
-config.font_size = 15.0
+config.font = wezterm.font(cool_fonts[1])
+config.font_size = 17.0
 config.line_height = 1.20
 
 -- General
@@ -35,25 +35,12 @@ config.scrollback_lines = 10000
 config.window_padding = {
 	left = 2,
 	right = 2,
-	top = 0,
-	bottom = 0,
+	top = 5,
+	bottom = 5,
 }
 
 -- Window frame config
 config.enable_tab_bar = false
--- config.window_frame = {
--- 	font = wezterm.font({ family = cool_fonts[1], weight = "Bold" }),
--- 	font_size = 12,
--- }
--- config.colors = {
--- 	tab_bar = {
--- 		inactive_tab_edge = "#575757",
--- 	},
--- }
-
--- Enable image processing from kitty
-config.enable_kitty_keyboard = true
-config.enable_kitty_graphics = true
 
 -- Keybindings
 config.keys = {
