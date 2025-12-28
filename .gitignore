@@ -21,8 +21,10 @@ tmux/.tmux
 # Git
 git/credentials
 
+# Old nvim
+nvim-old.bak/*
+
 # Lock files
 nvim/lazy-lock.json
-nvim-old.bak/*
 nvim/lsp/*
 nvim/.luarc.json
