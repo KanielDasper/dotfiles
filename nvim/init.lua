@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python", "json", "lua" },
+	pattern = { "python", "json", "lua", "git_config" },
 	callback = function()
 		vim.treesitter.start()
 	end,

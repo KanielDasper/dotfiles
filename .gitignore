@@ -2,6 +2,7 @@
 zsh/*
 !zsh/.zshrc
 !zsh/.p10k.zsh
+!zsh/.zshenv
 
 # Vim
 ## Directories
@@ -22,6 +23,6 @@ git/credentials
 
 # Lock files
 nvim/lazy-lock.json
-nvim-old.bak/
+nvim-old.bak/*
 nvim/lsp/*
 nvim/.luarc.json

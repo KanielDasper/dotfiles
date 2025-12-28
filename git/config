@@ -7,19 +7,8 @@
 	st = status
 	cm = commit -m
 	d = difftool -y
-  m = mergetool
+  m = mergetool -y
 [diff]
 	tool = nvimdiff
 [merge]
 	tool = nvimdiff
-[core]
-    pager = delta
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-    navigate = true  # use n and N to move between diff sections
-    dark = true      # or light = true, or omit for auto-detection
-[difftool "nvimdiff"]
-    cmd = nvim -d "$LOCAL" "$REMOTE"
-[mergetool "nvimdiff"]
-    trustExitCode = true
