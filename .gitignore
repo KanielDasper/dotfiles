@@ -25,6 +25,7 @@ git/credentials
 nvim-old.bak/*
 
 # Lock files
-nvim/lazy-lock.json
 nvim/lsp/*
+nvim/compiler/*
+nvim/after/*
 nvim/.luarc.json
