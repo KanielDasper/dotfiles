@@ -16,8 +16,6 @@ export CONFIG="$XDG_CONFIG_HOME"
 export CACHE="$XDG_CACHE_HOME"
 export DATA="$XDG_DATA_HOME"
 export STATE="$XDG_STATE_HOME"
-export CODE="${HOME}/Code"
-export DOC="${HOME}/Documents"
 
 # ~/ Clean-up
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
@@ -25,13 +23,7 @@ export LESSHISTFILE="-"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 export BASHDOTDIR="$XDG_CONFIG_HOME/bash"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle/config"
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
 # Default binaries
 export EDITOR=nvim

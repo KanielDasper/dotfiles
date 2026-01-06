@@ -1,15 +1,14 @@
 -- mappings.lua
--- Small rebinds to make python less of a pain
 hs.hotkey.bind("ctrl", "8", function()
 	hs.eventtap.keyStrokes("[")
 end)
 hs.hotkey.bind("ctrl", "9", function()
 	hs.eventtap.keyStrokes("]")
 end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "8", function()
+hs.hotkey.bind("ctrl", "7", function()
 	hs.eventtap.keyStrokes("{")
 end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "9", function()
+hs.hotkey.bind("ctrl", "0", function()
 	hs.eventtap.keyStrokes("}")
 end)
 hs.hotkey.bind("cmd", "<", function()
@@ -18,16 +17,12 @@ end)
 hs.hotkey.bind({ "cmd", "shift" }, "<", function()
 	hs.eventtap.keyStrokes("/")
 end)
-
 hs.hotkey.bind("cmd", "i", function()
 	hs.eventtap.keyStrokes("|")
 end)
--- hs.hotkey.bind("ctrl", "2", function()
--- 	hs.eventtap.keyStrokes("@")
--- end)
 
 -- Nightlight lumen, timeStart, timeEnd
-hs.redshift.start(2800, "06:00", "05:00")
+hs.redshift.start(2000, "06:00", "05:00")
 hs.hotkey.bind({ "cmd" }, "$", "Toggle Redshift", hs.redshift.toggle)
 
 -- Move to center of screen
@@ -47,20 +42,13 @@ end
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "f", function()
 	resizeAndCenterWindow()
 end)
-
--- Open trashbin
+hs.hotkey.bind({ "ctrl", "cmd" }, "f", function()
+	hs.application.launchOrFocus("Finder")
+end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
 	hs.execute("open ~/.Trash", true)
 	resizeAndCenterWindow()
 end)
-
--- Func to open specific folder locations
--- hs.hotkey.bind({ "ctrl", "cmd" }, "s", function()
--- 	hs.execute("open ~/Documents/Informationsvidenskab/Speciale/", true)
--- 	resizeAndCenterWindow()
--- end)
-
--- Focus WezTerm
 hs.hotkey.bind("ctrl", "return", function()
 	hs.application.launchOrFocus("WezTerm")
 end)
@@ -69,18 +57,3 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "return", function()
 	hs.application.launchOrFocus("Arc")
 end)
 -- Focus Finder
-hs.hotkey.bind({ "ctrl", "cmd" }, "f", function()
-	hs.application.launchOrFocus("Finder")
-end)
--- Focus Calendar
-hs.hotkey.bind({ "ctrl", "cmd" }, "c", function()
-	hs.application.launchOrFocus("Calendar")
-end)
--- Focus Email
-hs.hotkey.bind({ "ctrl", "cmd" }, "m", function()
-	hs.application.launchOrFocus("Mail")
-end)
--- Focus Preview
-hs.hotkey.bind({ "ctrl", "cmd" }, "p", function()
-	hs.application.launchOrFocus("Preview")
-end)
