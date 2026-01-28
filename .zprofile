@@ -25,6 +25,9 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 export BASHDOTDIR="$XDG_CONFIG_HOME/bash"
 export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 
-# Default binaries
-export EDITOR=nvim
+# Interactive
+export EDITOR='nvim'
+export MANPAGER='nvim +Man!'
+export GIT_PAGER='nvim +Man!'
 export BAT_THEME="tokyonight_moon"
+export DOCKER_HOST=unix://$HOME/.config/colima/default/docker.sock

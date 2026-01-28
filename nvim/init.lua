@@ -3,8 +3,10 @@ vim.opt.signcolumn = "yes:1"
 vim.opt.cursorlineopt = "number"
 vim.opt.wildmode = "noselect"
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = "menu,menuone,noinsert"
+vim.opt.completeopt = "menu,noinsert"
 vim.opt.fillchars = { diff = "╱" }
+vim.opt.foldlevel = 99
+vim.opt.scrolloff = 10
 vim.opt.pumheight = 10
 vim.opt.shiftwidth = 2
 vim.opt.laststatus = 2
@@ -35,7 +37,7 @@ vim.pack.add({
 vim.g.vimwiki_list = { { path = "~/Documents/vimwiki", syntax = "markdown", ext = ".md" } }
 vim.g.vimwiki_global_ext = 0
 
-local plugins = { "mini.diff", "mini.icons", "mini.completion", "mini.pick", "tokyonight" }
+local plugins = { "mini.icons", "mini.completion", "mini.pick", "tokyonight" }
 for _, value in ipairs(plugins) do
 	require(value).setup()
 end
@@ -55,6 +57,7 @@ require("conform").setup({
 		scala = { "scalafmt" },
 	},
 })
+vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 vim.cmd([[colorscheme tokyonight-storm]])
 local opts = { noremap = true, silent = true }
@@ -72,7 +75,6 @@ vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", opts)
 vim.keymap.set("n", "<leader>js", require("conform").format, opts)
 vim.keymap.set("n", "<leader>q", require("mini.bufremove").delete)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-vim.keymap.set("n", "go", require("mini.diff").toggle_overlay)
 vim.keymap.set("n", "<Backspace>", ":nohl<cr>", opts)
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv", opts)
@@ -93,15 +95,13 @@ vim.api.nvim_create_autocmd("CmdlineChanged", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python", "json", "lua", "rust" },
+	pattern = { "python", "json", "lua", "rust", "markdown", "scala" },
 	callback = function()
 		vim.treesitter.start()
+		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo[0][0].foldmethod = "expr"
 	end,
 })
 
 vim.diagnostic.config({ underline = true, virtual_text = true })
-vim.opt.foldlevel = 99
-vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.wo[0][0].foldmethod = "expr"
-vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 vim.lsp.enable({ "lua_ls", "ty", "jsonls", "rust_analyzer" })

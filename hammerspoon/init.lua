@@ -9,8 +9,8 @@ hs.alert.show("Config reloaded...")
 
 -- require  files
 -- TODO: Make into spoons?
-require("plugin.toggleFnKeys")
+-- require("plugin.toggleFnKeys")
 require("plugin.mappings")
 require("plugin.ctrl-esc")
 
-hs.loadSpoon("cmdMate")
+-- hs.loadSpoon("cmdMate")
