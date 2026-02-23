@@ -4,13 +4,10 @@ hs = hs -- hs (lowercase) is hammerspoon API entry point -> LSP should ignore di
 -- Reload config
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "h", function()
 	hs.reload()
+	hs.notify.new({ title = "Hammerspoon" , informativeText="Config reloaded!"}):send()
 end)
-hs.alert.show("Config reloaded...")
 
--- require  files
--- TODO: Make into spoons?
--- require("plugin.toggleFnKeys")
+require("plugin.toggleFnKeys")
 require("plugin.mappings")
 require("plugin.ctrl-esc")
-
 -- hs.loadSpoon("cmdMate")

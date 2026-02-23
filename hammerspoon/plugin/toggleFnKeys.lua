@@ -1,5 +1,5 @@
 -- toggleFnKeys.lua
-hs.hotkey.bind({ "cmd" }, "escape", function()
+hs.hotkey.bind({ "cmd", "ctrl" }, "escape", function()
 	hs.alert.show("Toggle fn keys...")
 	local script = [[ set osver to system version of (system info)
 

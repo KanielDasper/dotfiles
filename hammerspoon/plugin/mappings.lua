@@ -50,10 +50,9 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
 	resizeAndCenterWindow()
 end)
 hs.hotkey.bind("ctrl", "return", function()
-	hs.application.launchOrFocus("WezTerm")
+	hs.application.launchOrFocus("Ghostty")
 end)
 -- Focus Arc
 hs.hotkey.bind({ "ctrl", "cmd" }, "return", function()
 	hs.application.launchOrFocus("Arc")
 end)
--- Focus Finder
