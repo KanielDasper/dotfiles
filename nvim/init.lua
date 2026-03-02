@@ -120,4 +120,4 @@ vim.lsp.config("rust_analyzer", {
 		},
 	},
 })
-vim.lsp.enable({ "lua_ls", "ty", "jsonls", "rust_analyzer", "clangd" })
+vim.lsp.enable({ "lua_ls", "ty", "ruff", "jsonls", "rust_analyzer", "clangd" })
