@@ -25,7 +25,8 @@ export DOCKER_HOST=unix://$HOME/.config/colima/default/docker.sock
 
 # $HOME clean-up
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
-export LESSHISTFILE="-"
+export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
+export PYTHON_HISTORY="$XDG_DATA_HOME/python/history"
 export ZSH="$CONFIG/oh-my-zsh/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

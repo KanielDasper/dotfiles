@@ -2,10 +2,10 @@ zmodload zsh/complist
 autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U colors && colors 
-autoload -U tetris # main attraction of zsh, obviously
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' squeeze-slashes false 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 setopt append_history inc_append_history share_history 
 setopt auto_menu menu_complete
@@ -15,7 +15,6 @@ setopt no_case_glob no_case_match
 setopt globdots 
 setopt extended_glob 
 setopt emacs
-unsetopt prompt_sp
 
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -33,6 +32,6 @@ alias ..="cd .."
 alias va="source .venv/bin/activate"
 
 NEWLINE=$'\n'
-PROMPT="${NEWLINE}%K{#3b4252} %F{#ECEFF4}%n %K{#4c566a} %~ %f%k ❯ "
+PROMPT="${NEWLINE}%K{#3b4252} %F{#ECEFF4}%n@%m %f%k %~ ❯ "
 
 source "/opt/homebrew/Cellar/zsh-syntax-highlighting/0.8.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
