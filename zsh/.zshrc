@@ -1,22 +1,38 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+zmodload zsh/complist
+autoload -U colors && colors
+autoload -U compinit && compinit
+autoload -U colors && colors 
+autoload -U tetris # main attraction of zsh, obviously
 
+zstyle ':completion:*' menu select
+zstyle ':completion:*' squeeze-slashes false 
 
-plugins=(zsh-syntax-highlighting)
-fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+setopt append_history inc_append_history share_history 
+setopt auto_menu menu_complete
+setopt autocd 
+setopt auto_param_slash
+setopt no_case_glob no_case_match
+setopt globdots 
+setopt extended_glob 
+setopt emacs
+unsetopt prompt_sp
 
-ZSH_THEME="gentoo"
-autoload -zU zmv compinit
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTFILE="$XDG_CACHE_HOME/zsh_history" 
+HISTCONTROL=ignoreboth
 
-source $ZSH/oh-my-zsh.sh
+bindkey '^[[Z' reverse-menu-complete
+bindkey "^n" history-search-forward
+bindkey "^p" history-search-backward
 
 alias v="nvim"
 alias vi="nvim"
 alias ls="ls -alh --color=always"
 alias ..="cd .."
 alias va="source .venv/bin/activate"
-alias book="bookokrat"
 
-source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+NEWLINE=$'\n'
+PROMPT="${NEWLINE}%K{#3b4252} %F{#ECEFF4}%n %K{#4c566a} %~ %f%k ❯ "
+
+source "/opt/homebrew/Cellar/zsh-syntax-highlighting/0.8.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
