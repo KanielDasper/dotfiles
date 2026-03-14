@@ -8,7 +8,7 @@ local obj = {}
 obj.__index = obj
 
 -- Metadata
-obj.name = "cmdMate"
+obj.name = "fnMate"
 obj.version = "1.0"
 obj.author = "ashfinal <ashfinal@gmail.com>"
 obj.homepage = "https://github.com/Hammerspoon/Spoons"
@@ -19,7 +19,7 @@ function obj:init()
 		local flags = event:getFlags()
 		local char = event:getCharacters()
 		local shiftHeld = flags["shift"]
-		local cmdHeld = flags["cmd"]
+		local cmdHeld = flags["fn"]
 
 		local keyMap = {
 			h = "left",
