@@ -14,7 +14,12 @@ zstyle ':vcs_info:*' stagedstr ' +'
 zstyle ':vcs_info:git:*' formats       '(%b%u%c)'
 zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 
-setopt append_history inc_append_history share_history 
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTFILE="$XDG_CACHE_HOME/zsh_history" 
+HISTUP=erase
+setopt appendhistory inc_append_history share_history 
+setopt hist_ignore_all_dups hist_ignore_dups hist_find_no_dups hist_save_no_dups
 setopt auto_menu menu_complete
 setopt autocd 
 setopt auto_param_slash
@@ -25,10 +30,6 @@ setopt emacs
 setopt prompt_subst
 add-zsh-hook precmd vcs_info
 
-HISTSIZE=1000000
-SAVEHIST=1000000
-HISTFILE="$XDG_CACHE_HOME/zsh_history" 
-HISTCONTROL=ignoreboth
 
 bindkey '^[[Z' reverse-menu-complete
 bindkey "^n" history-search-forward
