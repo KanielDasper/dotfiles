@@ -24,7 +24,7 @@ vim.opt.ignorecase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.relativenumber = true
-vim.diagnostic.config({ underline = true, virtual_text = true })
+vim.diagnostic.config({ underline = true, signs = true, update_in_insert = true })
 
 vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.nvim", version = "main" },
@@ -35,13 +35,14 @@ vim.pack.add({
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/tpope/vim-surround" },
 	{ src = "https://github.com/vimwiki/vimwiki" },
+	{ src = "https://github.com/vim-scripts/bufexplorer.zip" },
 })
 vim.cmd("packadd nvim.undotree")
 
 vim.g.vimwiki_list = { { path = "~/Documents/vimwiki", syntax = "markdown", ext = ".md" } }
 vim.g.vimwiki_global_ext = 0
 
-local plugins = { "mini.icons", "mini.completion", "mini.pick", "tokyonight" }
+local plugins = { "mini.icons", "mini.completion", "mini.pick", "mini.diff", "tokyonight" }
 for _, value in ipairs(plugins) do
 	require(value).setup()
 end
@@ -71,7 +72,8 @@ vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 vim.cmd([[colorscheme tokyonight-moon]])
 local opts = { noremap = true, silent = true }
 vim.keymap.set({ "n", "v" }, "æ", ":")
-vim.keymap.set({ "n", "v" }, "Æ", ":lua<Space>")
+vim.keymap.set({ "n", "v" }, "j", 'v:count == 0 ? "gj" : "j"', { expr = true })
+vim.keymap.set({ "n", "v" }, "k", 'v:count == 0 ? "gk" : "k"', { expr = true })
 vim.keymap.set("n", "U", "<C-R>", opts)
 vim.keymap.set("n", "<leader>o", "<cmd>copen<cr>", opts)
 vim.keymap.set("n", "<leader>e", "<cmd>Oil<cr>", opts)
@@ -79,8 +81,10 @@ vim.keymap.set("n", "<leader>g", "<cmd>Git | only<cr>", opts)
 vim.keymap.set("n", "<leader>f", "<cmd>Pick files<cr>", opts)
 vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", opts)
 vim.keymap.set("n", "<leader>u", "<cmd>Undotree<cr>", opts)
+vim.keymap.set("n", "<leader>l", "<cmd>BufExplorer<cr>", opts)
 vim.keymap.set("n", "<leader>r", require("conform").format, opts)
 vim.keymap.set("n", "<leader>q", require("mini.bufremove").delete)
+vim.keymap.set("n", "<leader>?", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "<Backspace>", ":nohl<cr>", opts)
 vim.keymap.set("t", "<Esc>", "<c-\\><c-n>", opts)
@@ -91,7 +95,7 @@ vim.keymap.set("v", ">", ">gv", opts)
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		(vim.hl or vim.highlight).on_yank()
+		vim.highlight.on_yank()
 	end,
 })
 
@@ -119,4 +123,4 @@ vim.lsp.config("rust_analyzer", {
 		},
 	},
 })
-vim.lsp.enable({ "lua_ls", "ty", "ruff", "jsonls", "rust_analyzer", "clangd" })
+vim.lsp.enable({ "lua_ls", "ty", "ruff", "rust_analyzer", "clangd" })
