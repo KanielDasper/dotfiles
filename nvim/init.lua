@@ -29,7 +29,6 @@ vim.diagnostic.config({ underline = true, virtual_text = true })
 vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.nvim", version = "main" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/folke/tokyonight.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -37,6 +36,7 @@ vim.pack.add({
 	{ src = "https://github.com/tpope/vim-surround" },
 	{ src = "https://github.com/vimwiki/vimwiki" },
 })
+vim.cmd("packadd nvim.undotree")
 
 vim.g.vimwiki_list = { { path = "~/Documents/vimwiki", syntax = "markdown", ext = ".md" } }
 vim.g.vimwiki_global_ext = 0
@@ -46,6 +46,7 @@ for _, value in ipairs(plugins) do
 	require(value).setup()
 end
 
+require("vim._core.ui2").enable({ enabled = true })
 require("oil").setup({
 	view_options = { show_hidden = true },
 	lsp_file_methods = { enabled = true, timeout_ms = 1000, autosave_changes = true },
@@ -72,16 +73,14 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set({ "n", "v" }, "æ", ":")
 vim.keymap.set({ "n", "v" }, "Æ", ":lua<Space>")
 vim.keymap.set("n", "U", "<C-R>", opts)
-vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>", opts)
-vim.keymap.set("n", "<s-tab>", "<cmd>bprev<cr>", opts)
 vim.keymap.set("n", "<leader>o", "<cmd>copen<cr>", opts)
 vim.keymap.set("n", "<leader>e", "<cmd>Oil<cr>", opts)
 vim.keymap.set("n", "<leader>g", "<cmd>Git | only<cr>", opts)
 vim.keymap.set("n", "<leader>f", "<cmd>Pick files<cr>", opts)
 vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", opts)
+vim.keymap.set("n", "<leader>u", "<cmd>Undotree<cr>", opts)
 vim.keymap.set("n", "<leader>r", require("conform").format, opts)
 vim.keymap.set("n", "<leader>q", require("mini.bufremove").delete)
-vim.keymap.set("n", "go", "<cmd>Gitsign preview_hunk<cr>", opts)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "<Backspace>", ":nohl<cr>", opts)
 vim.keymap.set("t", "<Esc>", "<c-\\><c-n>", opts)
@@ -104,7 +103,7 @@ vim.api.nvim_create_autocmd("CmdlineChanged", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python", "json", "lua", "rust", "markdown", "c" },
+	pattern = { "python", "json", "lua", "rust", "markdown", "c", "diff" },
 	callback = function()
 		vim.treesitter.start()
 		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
