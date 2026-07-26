@@ -1,4 +1,3 @@
-# If Homebrew is installed via /opt/homebrew (Apple Silicon)  If you're using macOS, you'll want this enabled
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
@@ -37,7 +36,5 @@ export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 
 # PATH
 export PATH="/Users/danielkasper/.local/share/../bin:$PATH"
-export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/scala@3.3/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 source ~/.local/share/cargo/env
