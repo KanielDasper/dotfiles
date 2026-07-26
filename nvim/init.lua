@@ -42,7 +42,7 @@ vim.cmd("packadd nvim.undotree")
 vim.g.vimwiki_list = { { path = "~/Documents/vimwiki", syntax = "markdown", ext = ".md" } }
 vim.g.vimwiki_global_ext = 0
 
-local plugins = { "mini.icons", "mini.completion", "mini.pick", "mini.diff", "tokyonight" }
+local plugins = { "mini.icons", "mini.completion", "mini.pick", "mini.diff", "mini.pairs", "tokyonight" }
 for _, value in ipairs(plugins) do
 	require(value).setup()
 end
@@ -80,7 +80,7 @@ vim.keymap.set("n", "<leader>e", "<cmd>Oil<cr>", opts)
 vim.keymap.set("n", "<leader>g", "<cmd>Git | only<cr>", opts)
 vim.keymap.set("n", "<leader>f", "<cmd>Pick files<cr>", opts)
 vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", opts)
-vim.keymap.set("n", "<leader>u", "<cmd>Undotree<cr>", opts)
+vim.keymap.set("n", "<leader>p", "<cmd>w | make<cr>", opts)
 vim.keymap.set("n", "<leader>l", "<cmd>BufExplorer<cr>", opts)
 vim.keymap.set("n", "<leader>r", require("conform").format, opts)
 vim.keymap.set("n", "<leader>q", require("mini.bufremove").delete)
