@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.opt.signcolumn = "yes:1"
-vim.opt.cursorlineopt = "number"
+vim.opt.cursorlineopt = "number,line"
 vim.opt.completeopt = "menuone,noselect,popup"
 vim.opt.wildmode = "noselect"
 vim.opt.fillchars = { diff = "╱" }
@@ -35,9 +35,8 @@ vim.pack.add({
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/tpope/vim-surround" },
 	{ src = "https://github.com/vimwiki/vimwiki" },
-	{ src = "https://github.com/vim-scripts/bufexplorer.zip" },
+	{ src = "https://github.com/KanielDasper/codepointer.nvim" },
 })
-vim.cmd("packadd nvim.undotree")
 
 vim.g.vimwiki_list = { { path = "~/Documents/vimwiki", syntax = "markdown", ext = ".md" } }
 vim.g.vimwiki_global_ext = 0
@@ -47,7 +46,7 @@ for _, value in ipairs(plugins) do
 	require(value).setup()
 end
 
-require("vim._core.ui2").enable({ enabled = true })
+require("codepointer").setup()
 require("oil").setup({
 	view_options = { show_hidden = true },
 	lsp_file_methods = { enabled = true, timeout_ms = 1000, autosave_changes = true },
@@ -64,7 +63,7 @@ require("conform").setup({
 		html = { "prettier" },
 		markdown = { "prettier" },
 		python = { "ruff_format" },
-		rust = { "rustfmt", "leptosfmt" },
+		rust = { "rustfmt" },
 	},
 })
 vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
@@ -75,13 +74,12 @@ vim.keymap.set({ "n", "v" }, "æ", ":")
 vim.keymap.set({ "n", "v" }, "j", 'v:count == 0 ? "gj" : "j"', { expr = true })
 vim.keymap.set({ "n", "v" }, "k", 'v:count == 0 ? "gk" : "k"', { expr = true })
 vim.keymap.set("n", "U", "<C-R>", opts)
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", opts)
 vim.keymap.set("n", "<leader>o", "<cmd>copen<cr>", opts)
-vim.keymap.set("n", "<leader>e", "<cmd>Oil<cr>", opts)
-vim.keymap.set("n", "<leader>g", "<cmd>Git | only<cr>", opts)
+vim.keymap.set("n", "<leader>g", "<cmd>tabnew | Git | only<cr>", opts)
 vim.keymap.set("n", "<leader>f", "<cmd>Pick files<cr>", opts)
 vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", opts)
 vim.keymap.set("n", "<leader>p", "<cmd>w | make<cr>", opts)
-vim.keymap.set("n", "<leader>l", "<cmd>BufExplorer<cr>", opts)
 vim.keymap.set("n", "<leader>r", require("conform").format, opts)
 vim.keymap.set("n", "<leader>q", require("mini.bufremove").delete)
 vim.keymap.set("n", "<leader>?", vim.diagnostic.open_float, opts)
@@ -107,7 +105,7 @@ vim.api.nvim_create_autocmd("CmdlineChanged", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python", "json", "lua", "rust", "markdown", "c", "diff" },
+	pattern = { "python", "json", "lua", "rust", "markdown", "c", "gdscript", "diff" },
 	callback = function()
 		vim.treesitter.start()
 		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -115,12 +113,4 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.lsp.config("rust_analyzer", {
-	settings = {
-		["rust-analyzer"] = {
-			cargo = { features = "all" },
-			procMacro = { ignored = { leptos_macro = { "server" } } },
-		},
-	},
-})
-vim.lsp.enable({ "lua_ls", "ty", "ruff", "rust_analyzer", "clangd" })
+vim.lsp.enable({ "lua_ls", "pyrefly", "ruff", "rust_analyzer", "clangd", "gdscript" })

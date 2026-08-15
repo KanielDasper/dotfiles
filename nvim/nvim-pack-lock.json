@@ -1,24 +1,24 @@
 {
   "plugins": {
-    "bufexplorer.zip": {
-      "rev": "08b0100f5242e1de07bce40dc6376a4996791c33",
-      "src": "https://github.com/vim-scripts/bufexplorer.zip"
+    "codepointer.nvim": {
+      "rev": "88cf19a3e206ffb1e92f08ab06f7085e6cfbf52a",
+      "src": "https://github.com/KanielDasper/codepointer.nvim"
     },
     "conform.nvim": {
-      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "mini.nvim": {
-      "rev": "402ee6c6ec8ea44b22330446c8fb4e615fd3953e",
+      "rev": "946ae64e0ee807ae3c41f382f0114b4ed4915b2c",
       "src": "https://github.com/nvim-mini/mini.nvim",
       "version": "'main'"
     },
     "nvim-treesitter": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
-      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
+      "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "tokyonight.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/tpope/vim-surround"
     },
     "vimwiki": {
-      "rev": "72792615e739d0eb54a9c8f7e0a46a6e2407c9e8",
+      "rev": "a54a3002e229c4b43d69ced170ff77663a5b2c40",
       "src": "https://github.com/vimwiki/vimwiki"
     }
   }
