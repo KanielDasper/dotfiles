@@ -1,116 +1,101 @@
 vim.g.mapleader = " "
-vim.opt.signcolumn = "yes:1"
-vim.opt.cursorlineopt = "number,line"
-vim.opt.completeopt = "menuone,noselect,popup"
-vim.opt.wildmode = "noselect"
-vim.opt.fillchars = { diff = "╱" }
-vim.opt.clipboard:append("unnamedplus")
-vim.opt.foldlevel = 99
-vim.opt.scrolloff = 15
-vim.opt.pumheight = 10
-vim.opt.shiftwidth = 2
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.laststatus = 2
 vim.opt.tabstop = 2
-vim.opt.conceallevel = 0
-vim.opt.wrap = false
-vim.opt.number = true
+vim.opt.softtabstop = 2
+vim.opt.cmdheight = 0
+vim.opt.pumheight = 10
 vim.opt.autoread = true
 vim.opt.undofile = true
-vim.opt.swapfile = false
-vim.opt.smartcase = true
-vim.opt.cursorline = true
-vim.opt.expandtab = true
-vim.opt.ignorecase = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.relativenumber = true
-vim.diagnostic.config({ underline = true, signs = true, update_in_insert = true })
+vim.opt.wrap = false
+vim.opt.grepprg = "rg --vimgrep --smart-case --hidden"
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.completeopt = "menuone,noselect,popup"
+vim.opt.wildmode = "noselect"
+vim.opt.signcolumn = "yes"
+vim.opt.clipboard:append("unnamedplus")
 
 vim.pack.add({
-	{ src = "https://github.com/nvim-mini/mini.nvim", version = "main" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/folke/tokyonight.nvim" },
-	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/tpope/vim-fugitive" },
-	{ src = "https://github.com/tpope/vim-surround" },
-	{ src = "https://github.com/vimwiki/vimwiki" },
-	{ src = "https://github.com/KanielDasper/codepointer.nvim" },
+    { src = "https://github.com/nvim-mini/mini.nvim", version = "main" },
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/folke/tokyonight.nvim" },
+    { src = "https://github.com/stevearc/conform.nvim" },
+    { src = "https://github.com/stevearc/oil.nvim" },
+    { src = "https://github.com/tpope/vim-fugitive" },
+    { src = "https://github.com/tpope/vim-surround" },
+    { src = "https://github.com/KanielDasper/codepointer.nvim" },
 })
 
-vim.g.vimwiki_list = { { path = "~/Documents/vimwiki", syntax = "markdown", ext = ".md" } }
-vim.g.vimwiki_global_ext = 0
-
-local plugins = { "mini.icons", "mini.completion", "mini.pick", "mini.diff", "mini.pairs", "tokyonight" }
+local plugins = { "mini.icons", "mini.completion", "mini.pick", "mini.diff", "mini.pairs", "tokyonight", "codepointer" }
 for _, value in ipairs(plugins) do
-	require(value).setup()
+    require(value).setup()
 end
 
-require("codepointer").setup()
 require("oil").setup({
-	view_options = { show_hidden = true },
-	lsp_file_methods = { enabled = true, timeout_ms = 1000, autosave_changes = true },
+    view_options = { show_hidden = true },
+    lsp_file_methods = { enabled = true, timeout_ms = 1000, autosave_changes = true },
 })
-require("conform").setup({
-	formatters = {
-		["*"] = { async = true },
-	},
-	formatters_by_ft = {
-		c = { "clang-format" },
-		lua = { "stylua" },
-		json = { "prettier" },
-		toml = { "taplo" },
-		html = { "prettier" },
-		markdown = { "prettier" },
-		python = { "ruff_format" },
-		rust = { "rustfmt" },
-	},
-})
-vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 
-vim.cmd([[colorscheme tokyonight-moon]])
-local opts = { noremap = true, silent = true }
+require("conform").setup({
+    formatters = {
+        ["*"] = { async = true },
+    },
+    formatters_by_ft = {
+        c = { "clang-format" },
+        lua = { "stylua" },
+        json = { "prettier" },
+        toml = { "taplo" },
+        html = { "prettier" },
+        markdown = { "prettier" },
+        python = { "ruff_format" },
+        rust = { "rustfmt" },
+    },
+})
+
+vim.cmd([[colorscheme tokyonight]])
 vim.keymap.set({ "n", "v" }, "æ", ":")
-vim.keymap.set({ "n", "v" }, "j", 'v:count == 0 ? "gj" : "j"', { expr = true })
-vim.keymap.set({ "n", "v" }, "k", 'v:count == 0 ? "gk" : "k"', { expr = true })
-vim.keymap.set("n", "U", "<C-R>", opts)
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", opts)
-vim.keymap.set("n", "<leader>o", "<cmd>copen<cr>", opts)
-vim.keymap.set("n", "<leader>g", "<cmd>tabnew | Git | only<cr>", opts)
-vim.keymap.set("n", "<leader>f", "<cmd>Pick files<cr>", opts)
-vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", opts)
-vim.keymap.set("n", "<leader>p", "<cmd>w | make<cr>", opts)
-vim.keymap.set("n", "<leader>r", require("conform").format, opts)
+vim.keymap.set("n", "U", "<C-R>")
+vim.keymap.set("n", "-", "<cmd>Oil<cr>")
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("t", "<Esc>", "<c-\\><c-n>")
+vim.keymap.set("n", "<Backspace>", ":nohl<cr>")
+vim.keymap.set("n", "<leader>?", "<cmd>e ~/Documents/nvimwiki/index.txt<cr>")
+vim.keymap.set("n", "<leader>o", "<cmd>copen<cr>")
+vim.keymap.set("n", "<leader>f", "<cmd>Pick files<cr>")
+vim.keymap.set("n", "<leader>r", require("conform").format)
 vim.keymap.set("n", "<leader>q", require("mini.bufremove").delete)
-vim.keymap.set("n", "<leader>?", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-vim.keymap.set("n", "<Backspace>", ":nohl<cr>", opts)
-vim.keymap.set("t", "<Esc>", "<c-\\><c-n>", opts)
-vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv", opts)
-vim.keymap.set("v", "<", "<gv", opts)
-vim.keymap.set("v", ">", ">gv", opts)
+vim.keymap.set("n", "<leader>d", function()
+    vim.diagnostic.setqflist()
+    vim.cmd("copen")
+end, { silent = true })
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.ui.input({ prompt = "ripgrep: " }, function(pattern)
+        if pattern and pattern ~= "" then
+            vim.cmd("silent grep! " .. pattern)
+            vim.cmd("copen")
+        end
+    end)
+end, { silent = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 vim.api.nvim_create_autocmd("CmdlineChanged", {
-	pattern = { ":", "/", "?" },
-	callback = function()
-		vim.fn.wildtrigger()
-	end,
+    pattern = { ":", "/", "?" },
+    callback = function()
+        vim.fn.wildtrigger()
+    end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python", "json", "lua", "rust", "markdown", "c", "gdscript", "diff" },
-	callback = function()
-		vim.treesitter.start()
-		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-		vim.wo[0][0].foldmethod = "expr"
-	end,
+    pattern = { "python", "json", "svelte", "lua", "rust", "markdown", "c", "diff", "typescript", "html" },
+    callback = function()
+        vim.treesitter.start()
+    end,
 })
 
-vim.lsp.enable({ "lua_ls", "pyrefly", "ruff", "rust_analyzer", "clangd", "gdscript" })
+vim.lsp.enable({ "lua_ls", "pyrefly", "ruff", "rust_analyzer", "clangd", "svelte", "ts_ls" })
