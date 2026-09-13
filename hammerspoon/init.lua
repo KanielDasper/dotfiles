@@ -9,5 +9,6 @@ end)
 
 require("plugin.toggleFnKeys")
 require("plugin.mappings")
-require("plugin.ctrl-esc")
+require("plugin.preVIew")
+-- require("plugin.ctrl-esc")
 hs.loadSpoon("FnMate")
