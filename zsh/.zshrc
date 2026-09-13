@@ -2,6 +2,7 @@ fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 zmodload zsh/complist
 autoload -U compinit && compinit
 autoload -U colors && colors
+autoload -Uz zmv
 autoload -Uz add-zsh-hook vcs_info
 
 zstyle ':completion:*' menu select
@@ -29,7 +30,6 @@ setopt extended_glob
 setopt emacs
 setopt prompt_subst
 add-zsh-hook precmd vcs_info
-
 
 bindkey '^[[Z' reverse-menu-complete
 bindkey "^n" history-search-forward
