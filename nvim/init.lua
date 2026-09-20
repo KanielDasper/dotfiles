@@ -44,6 +44,7 @@ vim.keymap.set("n", "<Backspace>", ":nohl<cr>")
 vim.keymap.set("n", "<leader>?", "<cmd>e ~/Documents/nvimwiki/index.txt<cr>")
 vim.keymap.set("n", "<leader>o", "<cmd>copen<cr>")
 vim.keymap.set("n", "<leader>f", "<cmd>Pick files<cr>")
+vim.keymap.set("n", "<leader>v", "<cmd>Gvdiffsplit<cr>")
 vim.keymap.set("n", "<leader>r", require("conform").format)
 vim.keymap.set("n", "<leader>q", require("mini.bufremove").delete)
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
@@ -69,18 +70,14 @@ require("oil").setup({
     lsp_file_methods = { enabled = true, timeout_ms = 1000, autosave_changes = true },
 })
 require("conform").setup({
-    formatters = {
-        ["*"] = { async = true },
-    },
     formatters_by_ft = {
-        c = { "clang-format" },
+        python = { "ruff_format" },
+        rust = { "rustfmt" },
         lua = { "stylua" },
         json = { "prettier" },
         toml = { "taplo" },
         html = { "prettier" },
         markdown = { "prettier" },
-        python = { "ruff_format" },
-        rust = { "rustfmt" },
     },
 })
 vim.opt.grepprg = "rg --vimgrep --smart-case --hidden"
@@ -96,17 +93,18 @@ end, { silent = true })
 
 local ensure_installed = {
     "python",
-    "json",
-    "svelte",
-    "lua",
     "rust",
-    "markdown",
-    "c",
+    "svelte",
+    "bash",
     "diff",
+    "json",
     "typescript",
+    "javascript",
     "html",
+    "http",
+    "css",
+    "tsx",
     "dockerfile",
-    "gdscript",
 }
 require("nvim-treesitter").install(ensure_installed)
 vim.api.nvim_create_autocmd("FileType", {
@@ -129,4 +127,4 @@ vim.api.nvim_create_autocmd("FileType", {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completion").get_lsp_capabilities())
 vim.lsp.config("*", { capabilities = capabilities })
-vim.lsp.enable({ "lua_ls", "pyrefly", "ruff", "rust_analyzer", "clangd", "svelte", "ts_ls" })
+vim.lsp.enable({ "lua_ls", "pyrefly", "ruff", "rust_analyzer", "svelte", "ts_ls" })
