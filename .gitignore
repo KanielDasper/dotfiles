@@ -28,4 +28,3 @@ nvim-old.bak/*
 nvim/lsp/*
 nvim/compiler/*
 nvim/after/*
-nvim/.luarc.json
