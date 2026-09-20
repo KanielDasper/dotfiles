@@ -18,6 +18,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "0"
 vim.opt.shortmess:append("c")
 vim.opt.clipboard:append("unnamedplus")
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
@@ -61,7 +62,6 @@ local plugins = {
 for _, value in ipairs(plugins) do
     require(value).setup()
 end
-require("vim._core.ui2").enable()
 require("mini.diff").setup({
     source = require("mini.diff").gen_source.git({ index = false }),
 })
