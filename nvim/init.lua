@@ -33,6 +33,7 @@ vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/tpope/vim-fugitive" },
     { src = "https://github.com/tpope/vim-surround" },
+    { src = "https://github.com/tpope/vim-dadbod" },
     { src = "https://github.com/KanielDasper/codepointer.nvim" },
 })
 vim.cmd([[colorscheme tokyonight]])
@@ -66,6 +67,8 @@ require("mini.diff").setup({
     source = require("mini.diff").gen_source.git({ index = false }),
 })
 require("oil").setup({
+    watch_for_changes = true,
+    columns = { "icon", "mtime" },
     view_options = { show_hidden = true },
     lsp_file_methods = { enabled = true, timeout_ms = 1000, autosave_changes = true },
 })
