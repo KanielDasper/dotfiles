@@ -37,5 +37,4 @@ export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 
 # PATH
 export PATH="/Users/danielkasper/.local/share/../bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 source ~/.local/share/cargo/env

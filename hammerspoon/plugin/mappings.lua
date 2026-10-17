@@ -23,16 +23,7 @@ end)
 -- Nightlight lumen, timeStart, timeEnd
 hs.redshift.start(2000, "06:00", "05:00")
 hs.hotkey.bind({ "cmd" }, "$", "Toggle Redshift", hs.redshift.toggle)
-hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
-	hs.execute("open ~/.Trash", true)
-end)
+
 hs.hotkey.bind({ "ctrl", "cmd" }, "f", function()
 	hs.application.launchOrFocus("Finder")
-end)
-hs.hotkey.bind("ctrl", "delete", function()
-	hs.application.launchOrFocus("Ghostty")
-end)
--- Focus Arc
-hs.hotkey.bind("ctrl", "return", function()
-	hs.application.launchOrFocus("Arc")
 end)

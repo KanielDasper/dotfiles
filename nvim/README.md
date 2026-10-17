@@ -1,4 +1,6 @@
-# Nvim config
-Som det burde være
+# Neovim
 
-OBS. der er en `compiler/uv.vim` og `after/ftplugin/python.vim` der ikke er inkluderet
+Super simpelt, installer din LSP'er med `uv`, `npm` etc.
+
+Kræver:
+- `rg` & `git`

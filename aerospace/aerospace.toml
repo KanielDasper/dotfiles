@@ -4,59 +4,60 @@ after-startup-command = []
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 15
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
-key-mapping.preset = 'qwerty'
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+default-root-container-layout = "tiles"
+default-root-container-orientation = "auto"
+key-mapping.preset = "qwerty"
+on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
 on-focus-changed = [
-  'move-mouse window-lazy-center',
+  "move-mouse window-lazy-center",
 ]
 
 [gaps]
-inner.horizontal = 0
-inner.vertical =   0
-outer.left =       0
-outer.bottom =     0
-outer.top =        0
-outer.right =      0
+inner.horizontal = 1
+inner.vertical = 1
+# outer.left = 0
+# outer.bottom = 0
+# outer.top = 0
+# outer.right = 0
 
 [mode.main.binding]
-alt-comma = 'layout tiles horizontal vertical'
-ctrl-alt-comma = 'layout accordion horizontal vertical'
-cmd-h = 'focus left'
-cmd-j = 'focus down'
-cmd-k = 'focus up'
-cmd-l = 'focus right'
-# ctrl-cmd-h = 'move left'
-# ctrl-cmd-j = 'move down'
-# ctrl-cmd-k = 'move up'
-# ctrl-cmd-l = 'move right'
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-ctrl-alt-1 = 'move-node-to-workspace 1'
-ctrl-alt-2 = 'move-node-to-workspace 2'
-ctrl-alt-3 = 'move-node-to-workspace 3'
-ctrl-alt-4 = 'move-node-to-workspace 4'
-ctrl-alt-5 = 'move-node-to-workspace 5'
-ctrl-alt-6 = 'move-node-to-workspace 6'
-ctrl-alt-7 = 'move-node-to-workspace 7'
-ctrl-alt-8 = 'move-node-to-workspace 8'
-ctrl-alt-9 = 'move-node-to-workspace 9'
-alt-f = 'fullscreen' # Toggle between floating and tiling layout
-# alt-tab = 'workspace-back-and-forth'
-alt-cmd-m = 'resize smart -50'
-alt-cmd-i = 'resize smart +50'
-ctrl-alt-tab = 'move-workspace-to-monitor --wrap-around next'
-ctrl-cmd-s = 'mode service'
+ctrl-enter = 'exec-and-forget open /Applications/Firefox\ Nightly.app'
+ctrl-backspace = 'exec-and-forget open /Applications/Ghostty.app'
+
+alt-comma = "layout tiles horizontal vertical"
+ctrl-alt-comma = "layout accordion horizontal vertical"
+
+cmd-h = "focus left"
+cmd-j = "focus down"
+cmd-k = "focus up"
+cmd-l = "focus right"
+
+alt-1 = "workspace 1"
+alt-2 = "workspace 2"
+alt-3 = "workspace 3"
+alt-4 = "workspace 4"
+alt-5 = "workspace 5"
+alt-6 = "workspace 6"
+alt-7 = "workspace 7"
+alt-8 = "workspace 8"
+alt-9 = "workspace 9"
+
+ctrl-alt-1 = "move-node-to-workspace 1"
+ctrl-alt-2 = "move-node-to-workspace 2"
+ctrl-alt-3 = "move-node-to-workspace 3"
+ctrl-alt-4 = "move-node-to-workspace 4"
+ctrl-alt-5 = "move-node-to-workspace 5"
+ctrl-alt-6 = "move-node-to-workspace 6"
+ctrl-alt-7 = "move-node-to-workspace 7"
+ctrl-alt-8 = "move-node-to-workspace 8"
+ctrl-alt-9 = "move-node-to-workspace 9"
+
+ctrl-alt-tab = "move-workspace-to-monitor --wrap-around next"
+ctrl-cmd-s = "mode service"
+
+alt-f = "fullscreen"  # Toggle between floating and tiling layout
 
 [mode.service.binding]
-r = ['reload-config', 'mode main']
-enter = 'mode main'
-esc = 'mode main'
+r = ["reload-config", "mode main"]
+enter = "mode main"
+esc = "mode main"
