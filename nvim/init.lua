@@ -7,35 +7,28 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.cursorline = true
-vim.opt.splitright = true
 vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.signcolumn = "yes"
 vim.opt.grepprg = "rg --vimgrep"
-vim.api.nvim_create_autocmd("QuickFixCmdPost", { pattern = "grep", command = "copen" })
-vim.opt.path:append("src/**,lua/**,static/")
-vim.opt.wildignore:append("*/__pycache__/*,*/node_modules/*")
+vim.opt.findfunc = "v:lua.git_ff"
 vim.opt.clipboard:append("unnamedplus")
-vim.cmd.colorscheme({ "industry" })
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-
+vim.cmd.colorscheme({ "retrobox" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-mini/mini.completion",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/tpope/vim-fugitive",
 })
-
 vim.keymap.set("n", "grd", vim.lsp.buf.definition)
 vim.keymap.set("n", "grf", vim.lsp.buf.format)
 vim.keymap.set("n", "-", require("oil").open)
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.keymap.set("n", "<C-f>", ":find ")
-vim.keymap.set("n", "<C-g>", ":silent grep -e ")
-
+vim.keymap.set("n", "<C-f>", ":find<Space>")
+vim.keymap.set("n", "<C-g>", ":silent grep -e<Space>")
 vim.lsp.enable({
   "lua_ls",
-  "svelte",
   "tsc",
   "jdtls",
   "jsonls",
@@ -43,6 +36,7 @@ vim.lsp.enable({
   "pyrefly",
   "ruff",
 })
-
+function _G.git_ff(arg) return vim.fn.matchfuzzy(vim.fn.systemlist('git ls-files'), arg) end
+vim.api.nvim_create_autocmd("QuickFixCmdPost", { pattern = { "grep", "make" }, command = "copen" })
 require("mini.completion").setup()
 require("oil").setup({ view_options = { show_hidden = true } })

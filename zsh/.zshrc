@@ -40,6 +40,7 @@ alias vi="nvim"
 alias ls="ls -alh --color=always"
 alias ..="cd .."
 alias va="source .venv/bin/activate"
+export MYWIKI="~/Documents/vault/nvimwiki/"
 
 NEWLINE=$'\n'
 PROMPT="${NEWLINE}%K{#3b4252} %F{#ECEFF4}%n@%m %k %~%F{green}\${vcs_info_msg_0_}%f $ "
