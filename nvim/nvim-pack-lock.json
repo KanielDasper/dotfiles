@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "codepointer.nvim": {
+      "rev": "88cf19a3e206ffb1e92f08ab06f7085e6cfbf52a",
+      "src": "https://github.com/KanielDasper/codepointer.nvim"
+    },
     "mini.completion": {
       "rev": "9d4a963299bf824e316af116920bb27079e5b4eb",
       "src": "https://github.com/nvim-mini/mini.completion"

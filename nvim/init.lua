@@ -15,10 +15,12 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.completion",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/tpope/vim-fugitive",
+  "https://github.com/KanielDasper/codepointer.nvim",
 })
 vim.keymap.set("n", "grd", vim.lsp.buf.definition)
 vim.keymap.set("n", "grf", vim.lsp.buf.format)
 vim.keymap.set("n", "-", require("oil").open)
+vim.keymap.set("n", "cp", require("codepointer").set_codepointer_to_register)
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<C-f>", ":find<Space>")
 vim.keymap.set("n", "<C-g>", ":silent grep -e<Space>")
@@ -28,7 +30,7 @@ vim.lsp.enable({
   "jdtls",
   "jsonls",
   "tombi",
-  "pyrefly",
+  "ty",
   "ruff",
 })
 require("mini.completion").setup()
