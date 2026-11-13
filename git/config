@@ -3,11 +3,6 @@
 	email = dkdanielkasper@gmail.com
 [credential]
 	helper = store
-[alias]
-	st = status
-	cm = commit -m
-	d = difftool -y
-  m = mergetool -y
 [diff]
 	tool = nvimdiff
 [merge]
